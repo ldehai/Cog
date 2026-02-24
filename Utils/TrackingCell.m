@@ -21,6 +21,10 @@
 	[super stopTracking:lastPoint at:stopPoint inView:controlView mouseIsUp:flag];
 }
 
+- (void)drawKnob:(NSRect)knobRect {
+	// Hide the knob for a cleaner progress bar look
+}
+
 - (BOOL)isTracking {
 	return tracking;
 }
