@@ -25,7 +25,7 @@
 #include <vio2sf/ROMList.h>
 #include "melonDLDI.h"
 #include <vio2sf/FATStorage.h>
-#include <vio2sf/Utils.h>
+#include "Utils.h"
 
 namespace melonDS
 {

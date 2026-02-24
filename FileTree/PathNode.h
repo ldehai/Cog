@@ -19,6 +19,7 @@
 	NSString *lastPathComponent;
 
 	NSImage *icon;
+	BOOL iconLoaded;
 
 	NSArray *subpaths;
 
@@ -31,6 +32,7 @@
 - (void)setURL:(NSURL *)url;
 
 - (void)processPaths:(NSArray *)contents;
+- (void)processURLs:(NSArray<NSURL *> *)urls;
 
 - (NSArray *)subpaths;
 - (void)setSubpaths:(NSArray *)s;

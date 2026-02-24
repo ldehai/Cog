@@ -3,11 +3,145 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		83DE0C14180A9BD400269051 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83DE0C12180A9BD400269051 /* InfoPlist.strings */; };
+		BBB00022F40 /* Platform.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBF00012F40 /* Platform.mm */; };
+		BBB00042F40 /* Platform_AAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00032F40 /* Platform_AAC.cpp */; };
+		BBB00062F40 /* ARCodeFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00052F40 /* ARCodeFile.cpp */; };
+		BBB00082F40 /* ARDatabaseDAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00072F40 /* ARDatabaseDAT.cpp */; };
+		BBB000A2F40 /* AREngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00092F40 /* AREngine.cpp */; };
+		BBB000C2F40 /* ARM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF000B2F40 /* ARM.cpp */; };
+		BBB000E2F40 /* ARMInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF000D2F40 /* ARMInterpreter.cpp */; };
+		BBB00102F40 /* ARMInterpreter_ALU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF000F2F40 /* ARMInterpreter_ALU.cpp */; };
+		BBB00122F40 /* ARMInterpreter_Branch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00112F40 /* ARMInterpreter_Branch.cpp */; };
+		BBB00142F40 /* ARMInterpreter_LoadStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00132F40 /* ARMInterpreter_LoadStore.cpp */; };
+		BBB00162F40 /* ARMJIT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00152F40 /* ARMJIT.cpp */; };
+		BBB00182F40 /* ARMJIT_ALU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00172F40 /* ARMJIT_ALU.cpp */; };
+		BBB001A2F40 /* ARMJIT_Branch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00192F40 /* ARMJIT_Branch.cpp */; };
+		BBB001C2F40 /* ARMJIT_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF001B2F40 /* ARMJIT_Compiler.cpp */; };
+		BBB001E2F40 /* ARMJIT_Global.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF001D2F40 /* ARMJIT_Global.cpp */; };
+		BBB00202F40 /* ARMJIT_Linkage.S in Sources */ = {isa = PBXBuildFile; fileRef = BBF001F2F40 /* ARMJIT_Linkage.S */; };
+		BBB00222F40 /* ARMJIT_LoadStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00212F40 /* ARMJIT_LoadStore.cpp */; };
+		BBB00242F40 /* ARMJIT_Memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00232F40 /* ARMJIT_Memory.cpp */; };
+		BBB00262F40 /* ARM_InstrInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00252F40 /* ARM_InstrInfo.cpp */; };
+		BBB00282F40 /* Arm64Emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00272F40 /* Arm64Emitter.cpp */; };
+		BBB002A2F40 /* CP15.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00292F40 /* CP15.cpp */; };
+		BBB002C2F40 /* CRC32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF002B2F40 /* CRC32.cpp */; };
+		BBB002E2F40 /* DMA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF002D2F40 /* DMA.cpp */; };
+		BBB00302F40 /* DMA_Timings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF002F2F40 /* DMA_Timings.cpp */; };
+		BBB00322F40 /* FATIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00312F40 /* FATIO.cpp */; };
+		BBB00342F40 /* FATStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00332F40 /* FATStorage.cpp */; };
+		BBB00362F40 /* FreeBIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00352F40 /* FreeBIOS.cpp */; };
+		BBB00382F40 /* GBACart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00372F40 /* GBACart.cpp */; };
+		BBB003A2F40 /* GBACartMotionPak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00392F40 /* GBACartMotionPak.cpp */; };
+		BBB003C2F40 /* GPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF003B2F40 /* GPU.cpp */; };
+		BBB003E2F40 /* GPU2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF003D2F40 /* GPU2D.cpp */; };
+		BBB00402F40 /* GPU2D_Soft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF003F2F40 /* GPU2D_Soft.cpp */; };
+		BBB00422F40 /* GPU3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00412F40 /* GPU3D.cpp */; };
+		BBB00442F40 /* GPU3D_Soft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00432F40 /* GPU3D_Soft.cpp */; };
+		BBB00462F40 /* GPU3D_Texcache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00452F40 /* GPU3D_Texcache.cpp */; };
+		BBB00482F40 /* GPU_Soft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00472F40 /* GPU_Soft.cpp */; };
+		BBB004A2F40 /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00492F40 /* MathUtil.cpp */; };
+		BBB004C2F40 /* Mic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF004B2F40 /* Mic.cpp */; };
+		BBB004E2F40 /* NDS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF004D2F40 /* NDS.cpp */; };
+		BBB00502F40 /* NDSCart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF004F2F40 /* NDSCart.cpp */; };
+		BBB00522F40 /* NDSCartR4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00512F40 /* NDSCartR4.cpp */; };
+		BBB00542F40 /* ROMList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00532F40 /* ROMList.cpp */; };
+		BBB00562F40 /* RTC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00552F40 /* RTC.cpp */; };
+		BBB00582F40 /* SPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00572F40 /* SPI.cpp */; };
+		BBB005A2F40 /* SPI_Firmware.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00592F40 /* SPI_Firmware.cpp */; };
+		BBB005C2F40 /* SPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF005B2F40 /* SPU.cpp */; };
+		BBB005E2F40 /* Savestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF005D2F40 /* Savestate.cpp */; };
+		BBB00602F40 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF005F2F40 /* Utils.cpp */; };
+		BBB00622F40 /* Wifi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00612F40 /* Wifi.cpp */; };
+		BBB00642F40 /* WifiAP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00632F40 /* WifiAP.cpp */; };
+		BBB00662F40 /* x64ABI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00652F40 /* x64ABI.cpp */; };
+		BBB00682F40 /* x64CPUDetect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00672F40 /* x64CPUDetect.cpp */; };
+		BBB006A2F40 /* x64Emitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00692F40 /* x64Emitter.cpp */; };
+		BBB006C2F40 /* blip_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = BBF006B2F40 /* blip_buf.c */; };
+		BBB006E2F40 /* ff.c in Sources */ = {isa = PBXBuildFile; fileRef = BBF006D2F40 /* ff.c */; };
+		BBB00702F40 /* ffsystem.c in Sources */ = {isa = PBXBuildFile; fileRef = BBF006F2F40 /* ffsystem.c */; };
+		BBB00722F40 /* ffunicode.c in Sources */ = {isa = PBXBuildFile; fileRef = BBF00712F40 /* ffunicode.c */; };
+		BBB00742F40 /* CommonFuncs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF00732F40 /* CommonFuncs.cpp */; };
+		BBB00762F40 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = BBF00752F40 /* sha1.c */; };
+		BBB00782F40 /* xxhash.c in Sources */ = {isa = PBXBuildFile; fileRef = BBF00772F40 /* xxhash.c */; };
+		BBB007A2F40 /* aes.c in Sources */ = {isa = PBXBuildFile; fileRef = BBF00792F40 /* aes.c */; };
+		BBB00BD2F40 /* ARCodeFile.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00BC2F40 /* ARCodeFile.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00BF2F40 /* AREngine.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00BE2F40 /* AREngine.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00C12F40 /* ARM.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00C02F40 /* ARM.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00C32F40 /* ARMInterpreter.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00C22F40 /* ARMInterpreter.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00C52F40 /* ARMJIT.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00C42F40 /* ARMJIT.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00C72F40 /* ARMJIT_Compiler.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00C62F40 /* ARMJIT_Compiler.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00C92F40 /* ARMJIT_Global.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00C82F40 /* ARMJIT_Global.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00CB2F40 /* ARMJIT_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00CA2F40 /* ARMJIT_Internal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00CD2F40 /* ARMJIT_Memory.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00CC2F40 /* ARMJIT_Memory.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00CF2F40 /* ARMJIT_RegisterCache.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00CE2F40 /* ARMJIT_RegisterCache.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00D12F40 /* ARM_InstrInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00D02F40 /* ARM_InstrInfo.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00D32F40 /* Args.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00D22F40 /* Args.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00D52F40 /* ArmCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00D42F40 /* ArmCommon.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00D72F40 /* CRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00D62F40 /* CRC32.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00D92F40 /* DMA.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00D82F40 /* DMA.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00DB2F40 /* DSi.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00DA2F40 /* DSi.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00DD2F40 /* DSi_AES.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00DC2F40 /* DSi_AES.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00DF2F40 /* DSi_Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00DE2F40 /* DSi_Camera.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00E12F40 /* DSi_DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00E02F40 /* DSi_DSP.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00E32F40 /* DSi_I2C.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00E22F40 /* DSi_I2C.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00E52F40 /* DSi_I2S.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00E42F40 /* DSi_I2S.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00E72F40 /* DSi_NAND.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00E62F40 /* DSi_NAND.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00E92F40 /* DSi_NDMA.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00E82F40 /* DSi_NDMA.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00EB2F40 /* DSi_NWifi.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00EA2F40 /* DSi_NWifi.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00ED2F40 /* DSi_SD.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00EC2F40 /* DSi_SD.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00EF2F40 /* DSi_SPI_TSC.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00EE2F40 /* DSi_SPI_TSC.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00F12F40 /* DSi_TMD.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00F02F40 /* DSi_TMD.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00F32F40 /* FATIO.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00F22F40 /* FATIO.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00F52F40 /* FATStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00F42F40 /* FATStorage.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00F72F40 /* FIFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00F62F40 /* FIFO.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00F92F40 /* FreeBIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00F82F40 /* FreeBIOS.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00FB2F40 /* GBACart.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00FA2F40 /* GBACart.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00FD2F40 /* GPU.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00FC2F40 /* GPU.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB00FF2F40 /* GPU2D.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF00FE2F40 /* GPU2D.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01012F40 /* GPU2D_Soft.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01002F40 /* GPU2D_Soft.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01032F40 /* GPU3D.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01022F40 /* GPU3D.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01052F40 /* GPU3D_Soft.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01042F40 /* GPU3D_Soft.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01072F40 /* GPU_Soft.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01062F40 /* GPU_Soft.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBB01092F40 /* JitBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01082F40 /* JitBlock.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB010B2F40 /* MemConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF010A2F40 /* MemConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB010D2F40 /* MemRegion.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF010C2F40 /* MemRegion.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB010F2F40 /* Mic.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF010E2F40 /* Mic.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01112F40 /* NDS.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01102F40 /* NDS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBB01132F40 /* NDSCart.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01122F40 /* NDSCart.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01152F40 /* NDS_Header.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01142F40 /* NDS_Header.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01172F40 /* NonStupidBitfield.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01162F40 /* NonStupidBitfield.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01192F40 /* Platform.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01182F40 /* Platform.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB011B2F40 /* ROMList.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF011A2F40 /* ROMList.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB011D2F40 /* RTC.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF011C2F40 /* RTC.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB011F2F40 /* SPI.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF011E2F40 /* SPI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01212F40 /* SPI_Firmware.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01202F40 /* SPI_Firmware.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01232F40 /* SPU.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01222F40 /* SPU.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01252F40 /* Savestate.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01242F40 /* Savestate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01272F40 /* TinyVector.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01262F40 /* TinyVector.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01292F40 /* Wifi.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01282F40 /* Wifi.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB012B2F40 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF012A2F40 /* types.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB012D2F40 /* diskio.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF012C2F40 /* diskio.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB012F2F40 /* ff.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF012E2F40 /* ff.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01312F40 /* ffconf.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01302F40 /* ffconf.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01332F40 /* Arm64Emitter.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01322F40 /* Arm64Emitter.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01352F40 /* BitSet.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01342F40 /* BitSet.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01372F40 /* CommonFuncs.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01362F40 /* CommonFuncs.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01392F40 /* Compat.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01382F40 /* Compat.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB013B2F40 /* x64ABI.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF013A2F40 /* x64ABI.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB013D2F40 /* x64Emitter.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF013C2F40 /* x64Emitter.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB013F2F40 /* x64Reg.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF013E2F40 /* x64Reg.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01412F40 /* ARMJIT_Compiler_x64.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01402F40 /* ARMJIT_Compiler_x64.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01432F40 /* ARMJIT_Compiler_A64.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01422F40 /* ARMJIT_Compiler_A64.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01452F40 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01442F40 /* aes.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01472F40 /* aes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BBF01462F40 /* aes.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB01492F40 /* GdbArch.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF01482F40 /* GdbArch.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB014B2F40 /* GdbCmds.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF014A2F40 /* GdbCmds.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BBB014D2F40 /* GdbStub.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF014C2F40 /* GdbStub.h */; settings = {ATTRIBUTES = (Private, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,193 +150,206 @@
 		83DE0C06180A9BD400269051 /* vio2sf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = vio2sf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DE0C11180A9BD400269051 /* vio2sf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "vio2sf-Info.plist"; sourceTree = "<group>"; };
 		83DE0C13180A9BD400269051 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBF00012F40 /* Platform.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Platform.mm; sourceTree = "<group>"; };
+		BBF00032F40 /* Platform_AAC.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Platform_AAC.cpp; sourceTree = "<group>"; };
+		BBF00052F40 /* ARCodeFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARCodeFile.cpp; sourceTree = "<group>"; };
+		BBF00072F40 /* ARDatabaseDAT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARDatabaseDAT.cpp; sourceTree = "<group>"; };
+		BBF00092F40 /* AREngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AREngine.cpp; sourceTree = "<group>"; };
+		BBF000B2F40 /* ARM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARM.cpp; sourceTree = "<group>"; };
+		BBF000D2F40 /* ARMInterpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMInterpreter.cpp; sourceTree = "<group>"; };
+		BBF000F2F40 /* ARMInterpreter_ALU.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMInterpreter_ALU.cpp; sourceTree = "<group>"; };
+		BBF00112F40 /* ARMInterpreter_Branch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMInterpreter_Branch.cpp; sourceTree = "<group>"; };
+		BBF00132F40 /* ARMInterpreter_LoadStore.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMInterpreter_LoadStore.cpp; sourceTree = "<group>"; };
+		BBF00152F40 /* ARMJIT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMJIT.cpp; sourceTree = "<group>"; };
+		BBF00172F40 /* ARMJIT_ALU.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMJIT_ALU.cpp; sourceTree = "<group>"; };
+		BBF00192F40 /* ARMJIT_Branch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMJIT_Branch.cpp; sourceTree = "<group>"; };
+		BBF001B2F40 /* ARMJIT_Compiler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMJIT_Compiler.cpp; sourceTree = "<group>"; };
+		BBF001D2F40 /* ARMJIT_Global.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMJIT_Global.cpp; sourceTree = "<group>"; };
+		BBF001F2F40 /* ARMJIT_Linkage.S */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = ARMJIT_Linkage.S; sourceTree = "<group>"; };
+		BBF00212F40 /* ARMJIT_LoadStore.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMJIT_LoadStore.cpp; sourceTree = "<group>"; };
+		BBF00232F40 /* ARMJIT_Memory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARMJIT_Memory.cpp; sourceTree = "<group>"; };
+		BBF00252F40 /* ARM_InstrInfo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ARM_InstrInfo.cpp; sourceTree = "<group>"; };
+		BBF00272F40 /* Arm64Emitter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Arm64Emitter.cpp; sourceTree = "<group>"; };
+		BBF00292F40 /* CP15.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CP15.cpp; sourceTree = "<group>"; };
+		BBF002B2F40 /* CRC32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CRC32.cpp; sourceTree = "<group>"; };
+		BBF002D2F40 /* DMA.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DMA.cpp; sourceTree = "<group>"; };
+		BBF002F2F40 /* DMA_Timings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DMA_Timings.cpp; sourceTree = "<group>"; };
+		BBF00312F40 /* FATIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FATIO.cpp; sourceTree = "<group>"; };
+		BBF00332F40 /* FATStorage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FATStorage.cpp; sourceTree = "<group>"; };
+		BBF00352F40 /* FreeBIOS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FreeBIOS.cpp; sourceTree = "<group>"; };
+		BBF00372F40 /* GBACart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GBACart.cpp; sourceTree = "<group>"; };
+		BBF00392F40 /* GBACartMotionPak.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GBACartMotionPak.cpp; sourceTree = "<group>"; };
+		BBF003B2F40 /* GPU.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPU.cpp; sourceTree = "<group>"; };
+		BBF003D2F40 /* GPU2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPU2D.cpp; sourceTree = "<group>"; };
+		BBF003F2F40 /* GPU2D_Soft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPU2D_Soft.cpp; sourceTree = "<group>"; };
+		BBF00412F40 /* GPU3D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPU3D.cpp; sourceTree = "<group>"; };
+		BBF00432F40 /* GPU3D_Soft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPU3D_Soft.cpp; sourceTree = "<group>"; };
+		BBF00452F40 /* GPU3D_Texcache.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPU3D_Texcache.cpp; sourceTree = "<group>"; };
+		BBF00472F40 /* GPU_Soft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GPU_Soft.cpp; sourceTree = "<group>"; };
+		BBF00492F40 /* MathUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MathUtil.cpp; sourceTree = "<group>"; };
+		BBF004B2F40 /* Mic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mic.cpp; sourceTree = "<group>"; };
+		BBF004D2F40 /* NDS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NDS.cpp; sourceTree = "<group>"; };
+		BBF004F2F40 /* NDSCart.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NDSCart.cpp; sourceTree = "<group>"; };
+		BBF00512F40 /* NDSCartR4.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NDSCartR4.cpp; sourceTree = "<group>"; };
+		BBF00532F40 /* ROMList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ROMList.cpp; sourceTree = "<group>"; };
+		BBF00552F40 /* RTC.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RTC.cpp; sourceTree = "<group>"; };
+		BBF00572F40 /* SPI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SPI.cpp; sourceTree = "<group>"; };
+		BBF00592F40 /* SPI_Firmware.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SPI_Firmware.cpp; sourceTree = "<group>"; };
+		BBF005B2F40 /* SPU.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SPU.cpp; sourceTree = "<group>"; };
+		BBF005D2F40 /* Savestate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Savestate.cpp; sourceTree = "<group>"; };
+		BBF005F2F40 /* Utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		BBF00612F40 /* Wifi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wifi.cpp; sourceTree = "<group>"; };
+		BBF00632F40 /* WifiAP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WifiAP.cpp; sourceTree = "<group>"; };
+		BBF00652F40 /* x64ABI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = x64ABI.cpp; sourceTree = "<group>"; };
+		BBF00672F40 /* x64CPUDetect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = x64CPUDetect.cpp; sourceTree = "<group>"; };
+		BBF00692F40 /* x64Emitter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = x64Emitter.cpp; sourceTree = "<group>"; };
+		BBF006B2F40 /* blip_buf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = blip_buf.c; sourceTree = "<group>"; };
+		BBF006D2F40 /* ff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ff.c; sourceTree = "<group>"; };
+		BBF006F2F40 /* ffsystem.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ffsystem.c; sourceTree = "<group>"; };
+		BBF00712F40 /* ffunicode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ffunicode.c; sourceTree = "<group>"; };
+		BBF00732F40 /* CommonFuncs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CommonFuncs.cpp; sourceTree = "<group>"; };
+		BBF00752F40 /* sha1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		BBF00772F40 /* xxhash.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = xxhash.c; sourceTree = "<group>"; };
+		BBF00792F40 /* aes.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = aes.c; sourceTree = "<group>"; };
+		BBF007B2F40 /* ARDatabaseDAT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARDatabaseDAT.h; sourceTree = "<group>"; };
+		BBF007C2F40 /* ARMInterpreter_ALU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMInterpreter_ALU.h; sourceTree = "<group>"; };
+		BBF007D2F40 /* ARMInterpreter_Branch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMInterpreter_Branch.h; sourceTree = "<group>"; };
+		BBF007E2F40 /* ARMInterpreter_LoadStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMInterpreter_LoadStore.h; sourceTree = "<group>"; };
+		BBF007F2F40 /* ARM_InstrTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARM_InstrTable.h; sourceTree = "<group>"; };
+		BBF00802F40 /* DMA_Timings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMA_Timings.h; sourceTree = "<group>"; };
+		BBF00812F40 /* FreeBIOS_Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeBIOS_Data.h; sourceTree = "<group>"; };
+		BBF00822F40 /* GPU2D_OpenGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU2D_OpenGL.h; sourceTree = "<group>"; };
+		BBF00832F40 /* GPU3D_Compute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU3D_Compute.h; sourceTree = "<group>"; };
+		BBF00842F40 /* GPU3D_Compute_shaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU3D_Compute_shaders.h; sourceTree = "<group>"; };
+		BBF00852F40 /* GPU3D_OpenGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU3D_OpenGL.h; sourceTree = "<group>"; };
+		BBF00862F40 /* GPU3D_Texcache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU3D_Texcache.h; sourceTree = "<group>"; };
+		BBF00872F40 /* GPU3D_TexcacheOpenGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU3D_TexcacheOpenGL.h; sourceTree = "<group>"; };
+		BBF00882F40 /* GPU_ColorOp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU_ColorOp.h; sourceTree = "<group>"; };
+		BBF00892F40 /* GPU_OpenGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU_OpenGL.h; sourceTree = "<group>"; };
+		BBF008A2F40 /* OpenGLSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenGLSupport.h; sourceTree = "<group>"; };
+		BBF008B2F40 /* PlatformOGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatformOGL.h; sourceTree = "<group>"; };
+		BBF008C2F40 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		BBF008D2F40 /* WifiAP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiAP.h; sourceTree = "<group>"; };
+		BBF008E2F40 /* melonDLDI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = melonDLDI.h; sourceTree = "<group>"; };
+		BBF008F2F40 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		BBF00902F40 /* blip_buf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blip_buf.h; sourceTree = "<group>"; };
+		BBF00912F40 /* AACUcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AACUcode.h; sourceTree = "<group>"; };
+		BBF00922F40 /* G711Ucode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = G711Ucode.h; sourceTree = "<group>"; };
+		BBF00932F40 /* GraphicsUcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphicsUcode.h; sourceTree = "<group>"; };
+		BBF00942F40 /* UcodeBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UcodeBase.h; sourceTree = "<group>"; };
+		BBF00952F40 /* disassembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = disassembler.h; sourceTree = "<group>"; };
+		BBF00962F40 /* disassembler_c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = disassembler_c.h; sourceTree = "<group>"; };
+		BBF00972F40 /* teakra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = teakra.h; sourceTree = "<group>"; };
+		BBF00982F40 /* teakra_c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = teakra_c.h; sourceTree = "<group>"; };
+		BBF00992F40 /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		BBF009A2F40 /* ahbm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ahbm.h; sourceTree = "<group>"; };
+		BBF009B2F40 /* apbp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = apbp.h; sourceTree = "<group>"; };
+		BBF009C2F40 /* bit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bit.h; sourceTree = "<group>"; };
+		BBF009D2F40 /* btdmp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = btdmp.h; sourceTree = "<group>"; };
+		BBF009E2F40 /* common_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common_types.h; sourceTree = "<group>"; };
+		BBF009F2F40 /* core_timing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = core_timing.h; sourceTree = "<group>"; };
+		BBF00A02F40 /* crash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = crash.h; sourceTree = "<group>"; };
+		BBF00A12F40 /* decoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decoder.h; sourceTree = "<group>"; };
+		BBF00A22F40 /* icu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = icu.h; sourceTree = "<group>"; };
+		BBF00A32F40 /* interpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = interpreter.h; sourceTree = "<group>"; };
+		BBF00A42F40 /* matcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = matcher.h; sourceTree = "<group>"; };
+		BBF00A52F40 /* memory_interface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = memory_interface.h; sourceTree = "<group>"; };
+		BBF00A62F40 /* mmio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mmio.h; sourceTree = "<group>"; };
+		BBF00A72F40 /* operand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = operand.h; sourceTree = "<group>"; };
+		BBF00A82F40 /* parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		BBF00A92F40 /* processor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = processor.h; sourceTree = "<group>"; };
+		BBF00AA2F40 /* register.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = register.h; sourceTree = "<group>"; };
+		BBF00AB2F40 /* shared_memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shared_memory.h; sourceTree = "<group>"; };
+		BBF00AC2F40 /* teakra_dma.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = teakra_dma.h; sourceTree = "<group>"; };
+		BBF00AD2F40 /* test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
+		BBF00AE2F40 /* test_generator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = test_generator.h; sourceTree = "<group>"; };
+		BBF00AF2F40 /* timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
+		BBF00B02F40 /* coff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = coff.h; sourceTree = "<group>"; };
+		BBF00B12F40 /* sha256.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
+		BBF00B22F40 /* Align.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Align.h; sourceTree = "<group>"; };
+		BBF00B32F40 /* BitUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BitUtils.h; sourceTree = "<group>"; };
+		BBF00B42F40 /* CPUDetect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUDetect.h; sourceTree = "<group>"; };
+		BBF00B52F40 /* MathUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathUtil.h; sourceTree = "<group>"; };
+		BBF00B62F40 /* ARMJIT_Offsets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_Offsets.h; sourceTree = "<group>"; };
+		BBF00B72F40 /* sha1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		BBF00B82F40 /* sha1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sha1.hpp; sourceTree = "<group>"; };
+		BBF00B92F40 /* xxh3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xxh3.h; sourceTree = "<group>"; };
+		BBF00BA2F40 /* xxhash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xxhash.h; sourceTree = "<group>"; };
+		BBF00BB2F40 /* hexutil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hexutil.h; sourceTree = "<group>"; };
+		BBF00BC2F40 /* ARCodeFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCodeFile.h; sourceTree = "<group>"; };
+		BBF00BE2F40 /* AREngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AREngine.h; sourceTree = "<group>"; };
+		BBF00C02F40 /* ARM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARM.h; sourceTree = "<group>"; };
+		BBF00C22F40 /* ARMInterpreter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMInterpreter.h; sourceTree = "<group>"; };
+		BBF00C42F40 /* ARMJIT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT.h; sourceTree = "<group>"; };
+		BBF00C62F40 /* ARMJIT_Compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_Compiler.h; sourceTree = "<group>"; };
+		BBF00C82F40 /* ARMJIT_Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_Global.h; sourceTree = "<group>"; };
+		BBF00CA2F40 /* ARMJIT_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_Internal.h; sourceTree = "<group>"; };
+		BBF00CC2F40 /* ARMJIT_Memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_Memory.h; sourceTree = "<group>"; };
+		BBF00CE2F40 /* ARMJIT_RegisterCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_RegisterCache.h; sourceTree = "<group>"; };
+		BBF00D02F40 /* ARM_InstrInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARM_InstrInfo.h; sourceTree = "<group>"; };
+		BBF00D22F40 /* Args.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Args.h; sourceTree = "<group>"; };
+		BBF00D42F40 /* ArmCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArmCommon.h; sourceTree = "<group>"; };
+		BBF00D62F40 /* CRC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRC32.h; sourceTree = "<group>"; };
+		BBF00D82F40 /* DMA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMA.h; sourceTree = "<group>"; };
+		BBF00DA2F40 /* DSi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi.h; sourceTree = "<group>"; };
+		BBF00DC2F40 /* DSi_AES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_AES.h; sourceTree = "<group>"; };
+		BBF00DE2F40 /* DSi_Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_Camera.h; sourceTree = "<group>"; };
+		BBF00E02F40 /* DSi_DSP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_DSP.h; sourceTree = "<group>"; };
+		BBF00E22F40 /* DSi_I2C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_I2C.h; sourceTree = "<group>"; };
+		BBF00E42F40 /* DSi_I2S.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_I2S.h; sourceTree = "<group>"; };
+		BBF00E62F40 /* DSi_NAND.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_NAND.h; sourceTree = "<group>"; };
+		BBF00E82F40 /* DSi_NDMA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_NDMA.h; sourceTree = "<group>"; };
+		BBF00EA2F40 /* DSi_NWifi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_NWifi.h; sourceTree = "<group>"; };
+		BBF00EC2F40 /* DSi_SD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_SD.h; sourceTree = "<group>"; };
+		BBF00EE2F40 /* DSi_SPI_TSC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_SPI_TSC.h; sourceTree = "<group>"; };
+		BBF00F02F40 /* DSi_TMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSi_TMD.h; sourceTree = "<group>"; };
+		BBF00F22F40 /* FATIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FATIO.h; sourceTree = "<group>"; };
+		BBF00F42F40 /* FATStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FATStorage.h; sourceTree = "<group>"; };
+		BBF00F62F40 /* FIFO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FIFO.h; sourceTree = "<group>"; };
+		BBF00F82F40 /* FreeBIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeBIOS.h; sourceTree = "<group>"; };
+		BBF00FA2F40 /* GBACart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBACart.h; sourceTree = "<group>"; };
+		BBF00FC2F40 /* GPU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU.h; sourceTree = "<group>"; };
+		BBF00FE2F40 /* GPU2D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU2D.h; sourceTree = "<group>"; };
+		BBF01002F40 /* GPU2D_Soft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU2D_Soft.h; sourceTree = "<group>"; };
+		BBF01022F40 /* GPU3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU3D.h; sourceTree = "<group>"; };
+		BBF01042F40 /* GPU3D_Soft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU3D_Soft.h; sourceTree = "<group>"; };
+		BBF01062F40 /* GPU_Soft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPU_Soft.h; sourceTree = "<group>"; };
+		BBF01082F40 /* JitBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JitBlock.h; sourceTree = "<group>"; };
+		BBF010A2F40 /* MemConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemConstants.h; sourceTree = "<group>"; };
+		BBF010C2F40 /* MemRegion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemRegion.h; sourceTree = "<group>"; };
+		BBF010E2F40 /* Mic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mic.h; sourceTree = "<group>"; };
+		BBF01102F40 /* NDS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDS.h; sourceTree = "<group>"; };
+		BBF01122F40 /* NDSCart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDSCart.h; sourceTree = "<group>"; };
+		BBF01142F40 /* NDS_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDS_Header.h; sourceTree = "<group>"; };
+		BBF01162F40 /* NonStupidBitfield.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NonStupidBitfield.h; sourceTree = "<group>"; };
+		BBF01182F40 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		BBF011A2F40 /* ROMList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ROMList.h; sourceTree = "<group>"; };
+		BBF011C2F40 /* RTC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RTC.h; sourceTree = "<group>"; };
+		BBF011E2F40 /* SPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPI.h; sourceTree = "<group>"; };
+		BBF01202F40 /* SPI_Firmware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPI_Firmware.h; sourceTree = "<group>"; };
+		BBF01222F40 /* SPU.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPU.h; sourceTree = "<group>"; };
+		BBF01242F40 /* Savestate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Savestate.h; sourceTree = "<group>"; };
+		BBF01262F40 /* TinyVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyVector.h; sourceTree = "<group>"; };
+		BBF01282F40 /* Wifi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Wifi.h; sourceTree = "<group>"; };
+		BBF012A2F40 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		BBF012C2F40 /* diskio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = diskio.h; sourceTree = "<group>"; };
+		BBF012E2F40 /* ff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ff.h; sourceTree = "<group>"; };
+		BBF01302F40 /* ffconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ffconf.h; sourceTree = "<group>"; };
+		BBF01322F40 /* Arm64Emitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Arm64Emitter.h; sourceTree = "<group>"; };
+		BBF01342F40 /* BitSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BitSet.h; sourceTree = "<group>"; };
+		BBF01362F40 /* CommonFuncs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonFuncs.h; sourceTree = "<group>"; };
+		BBF01382F40 /* Compat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Compat.h; sourceTree = "<group>"; };
+		BBF013A2F40 /* x64ABI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = x64ABI.h; sourceTree = "<group>"; };
+		BBF013C2F40 /* x64Emitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = x64Emitter.h; sourceTree = "<group>"; };
+		BBF013E2F40 /* x64Reg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = x64Reg.h; sourceTree = "<group>"; };
+		BBF01402F40 /* ARMJIT_Compiler_x64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_Compiler_x64.h; sourceTree = "<group>"; };
+		BBF01422F40 /* ARMJIT_Compiler_A64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARMJIT_Compiler_A64.h; sourceTree = "<group>"; };
+		BBF01442F40 /* aes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		BBF01462F40 /* aes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = aes.hpp; sourceTree = "<group>"; };
+		BBF01482F40 /* GdbArch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GdbArch.h; sourceTree = "<group>"; };
+		BBF014A2F40 /* GdbCmds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GdbCmds.h; sourceTree = "<group>"; };
+		BBF014C2F40 /* GdbStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GdbStub.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		83051FA62F4C0AD6004C0413 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			privateHeaders = (
-				vio2sf/ARCodeFile.h,
-				vio2sf/AREngine.h,
-				vio2sf/Args.h,
-				vio2sf/ARM_InstrInfo.h,
-				vio2sf/ARM.h,
-				vio2sf/ArmCommon.h,
-				vio2sf/ARMInterpreter.h,
-				vio2sf/ARMJIT_A64/ARMJIT_Compiler_A64.h,
-				vio2sf/ARMJIT_Compiler.h,
-				vio2sf/ARMJIT_Global.h,
-				vio2sf/ARMJIT_Internal.h,
-				vio2sf/ARMJIT_Memory.h,
-				vio2sf/ARMJIT_RegisterCache.h,
-				vio2sf/ARMJIT_x64/ARMJIT_Compiler_x64.h,
-				vio2sf/ARMJIT.h,
-				vio2sf/CRC32.h,
-				vio2sf/debug/GdbArch.h,
-				vio2sf/debug/GdbCmds.h,
-				vio2sf/debug/GdbStub.h,
-				vio2sf/DMA.h,
-				vio2sf/dolphin/Arm64Emitter.h,
-				vio2sf/dolphin/BitSet.h,
-				vio2sf/dolphin/CommonFuncs.h,
-				vio2sf/dolphin/Compat.h,
-				vio2sf/dolphin/x64ABI.h,
-				vio2sf/dolphin/x64Emitter.h,
-				vio2sf/dolphin/x64Reg.h,
-				vio2sf/fatfs/diskio.h,
-				vio2sf/fatfs/ff.h,
-				vio2sf/fatfs/ffconf.h,
-				vio2sf/FATIO.h,
-				vio2sf/FATStorage.h,
-				vio2sf/FIFO.h,
-				vio2sf/FreeBIOS.h,
-				vio2sf/GBACart.h,
-				vio2sf/GPU.h,
-				vio2sf/GPU2D_Soft.h,
-				vio2sf/GPU2D.h,
-				vio2sf/GPU3D_Soft.h,
-				vio2sf/GPU3D.h,
-				vio2sf/JitBlock.h,
-				vio2sf/MemConstants.h,
-				vio2sf/MemRegion.h,
-				vio2sf/Mic.h,
-				vio2sf/NDS_Header.h,
-				vio2sf/NDSCart.h,
-				vio2sf/NonStupidBitfield.h,
-				vio2sf/Platform.h,
-				vio2sf/ROMList.h,
-				vio2sf/RTC.h,
-				vio2sf/Savestate.h,
-				vio2sf/SPI_Firmware.h,
-				vio2sf/SPI.h,
-				vio2sf/SPU.h,
-				"vio2sf/tiny-AES-c/aes.h",
-				"vio2sf/tiny-AES-c/aes.hpp",
-				vio2sf/TinyVector.h,
-				vio2sf/types.h,
-				vio2sf/Wifi.h,
-			);
-			publicHeaders = (
-				vio2sf/GPU_Soft.h,
-				vio2sf/NDS.h,
-			);
-			target = 83DE0C05180A9BD400269051 /* vio2sf */;
-		};
-		838F20F52F4C677E001DBA18 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				vio2sf/melonDS/ARMJIT_A64/ARMJIT_ALU.cpp,
-				vio2sf/melonDS/ARMJIT_A64/ARMJIT_Branch.cpp,
-				vio2sf/melonDS/ARMJIT_A64/ARMJIT_Compiler.cpp,
-				vio2sf/melonDS/ARMJIT_A64/ARMJIT_Linkage.S,
-				vio2sf/melonDS/ARMJIT_A64/ARMJIT_LoadStore.cpp,
-				vio2sf/melonDS/ARMJIT_x64/ARMJIT_ALU.cpp,
-				vio2sf/melonDS/ARMJIT_x64/ARMJIT_Branch.cpp,
-				vio2sf/melonDS/ARMJIT_x64/ARMJIT_Compiler.cpp,
-				vio2sf/melonDS/ARMJIT_x64/ARMJIT_GenOffsets.cpp,
-				vio2sf/melonDS/ARMJIT_x64/ARMJIT_Linkage.S,
-				vio2sf/melonDS/ARMJIT_x64/ARMJIT_LoadStore.cpp,
-				"vio2sf/melonDS/blip-buf/readme.txt",
-				vio2sf/melonDS/CMakeLists.txt,
-				vio2sf/melonDS/debug/gdb_test/.gitignore,
-				vio2sf/melonDS/debug/gdb_test/main.cpp,
-				vio2sf/melonDS/debug/gdb_test/Makefile,
-				vio2sf/melonDS/debug/GdbCmds.cpp,
-				vio2sf/melonDS/debug/GdbProto.cpp,
-				vio2sf/melonDS/debug/GdbStub.cpp,
-				vio2sf/melonDS/dolphin/Arm64Emitter.cpp,
-				vio2sf/melonDS/dolphin/MathUtil.cpp,
-				vio2sf/melonDS/dolphin/x64ABI.cpp,
-				vio2sf/melonDS/dolphin/x64CPUDetect.cpp,
-				vio2sf/melonDS/dolphin/x64Emitter.cpp,
-				vio2sf/melonDS/DSi_AES.cpp,
-				vio2sf/melonDS/DSi_Camera.cpp,
-				vio2sf/melonDS/DSi_DSP.cpp,
-				vio2sf/melonDS/DSi_I2C.cpp,
-				vio2sf/melonDS/DSi_I2S.cpp,
-				vio2sf/melonDS/DSi_NAND.cpp,
-				vio2sf/melonDS/DSi_NDMA.cpp,
-				vio2sf/melonDS/DSi_NWifi.cpp,
-				vio2sf/melonDS/DSi_SD.cpp,
-				vio2sf/melonDS/DSi_SPI_TSC.cpp,
-				vio2sf/melonDS/DSi.cpp,
-				vio2sf/melonDS/DSP_HLE/AACUcode.cpp,
-				vio2sf/melonDS/DSP_HLE/G711Ucode.cpp,
-				vio2sf/melonDS/DSP_HLE/GraphicsUcode.cpp,
-				vio2sf/melonDS/DSP_HLE/UcodeBase.cpp,
-				vio2sf/melonDS/fatfs/00history.txt,
-				vio2sf/melonDS/fatfs/00readme.txt,
-				vio2sf/melonDS/GPU_OpenGL.cpp,
-				vio2sf/melonDS/GPU2D_OpenGL.cpp,
-				vio2sf/melonDS/GPU3D_Compute.cpp,
-				vio2sf/melonDS/GPU3D_OpenGL.cpp,
-				vio2sf/melonDS/GPU3D_TexcacheOpenGL.cpp,
-				vio2sf/melonDS/OpenGLSupport.cpp,
-				vio2sf/melonDS/teakra/.gitignore,
-				vio2sf/melonDS/teakra/.travis.yml,
-				vio2sf/melonDS/teakra/appveyor.yml,
-				vio2sf/melonDS/teakra/CMakeLists.txt,
-				vio2sf/melonDS/teakra/CMakeModules/CreateDirectoryGroups.cmake,
-				vio2sf/melonDS/teakra/externals/CMakeLists.txt,
-				vio2sf/melonDS/teakra/README.md,
-				vio2sf/melonDS/teakra/src/ahbm.cpp,
-				vio2sf/melonDS/teakra/src/ahbm.md,
-				vio2sf/melonDS/teakra/src/apbp.cpp,
-				vio2sf/melonDS/teakra/src/apbp.md,
-				vio2sf/melonDS/teakra/src/btdmp.cpp,
-				vio2sf/melonDS/teakra/src/btdmp.md,
-				vio2sf/melonDS/teakra/src/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/coff_reader/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/coff_reader/main.cpp,
-				vio2sf/melonDS/teakra/src/cru.md,
-				vio2sf/melonDS/teakra/src/decoder.md,
-				vio2sf/melonDS/teakra/src/disassembler_c.cpp,
-				vio2sf/melonDS/teakra/src/disassembler.cpp,
-				vio2sf/melonDS/teakra/src/dma.cpp,
-				vio2sf/melonDS/teakra/src/dma.md,
-				vio2sf/melonDS/teakra/src/dsp1_reader/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/dsp1_reader/main.cpp,
-				vio2sf/melonDS/teakra/src/icu.md,
-				vio2sf/melonDS/teakra/src/makedsp1/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/makedsp1/main.cpp,
-				vio2sf/melonDS/teakra/src/makedsp1/sha256.cpp,
-				vio2sf/melonDS/teakra/src/memory_interface.cpp,
-				vio2sf/melonDS/teakra/src/miu.md,
-				vio2sf/melonDS/teakra/src/mmio.cpp,
-				vio2sf/melonDS/teakra/src/mmio.md,
-				vio2sf/melonDS/teakra/src/mod_test_generator/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/mod_test_generator/main.cpp,
-				vio2sf/melonDS/teakra/src/ocem.md,
-				vio2sf/melonDS/teakra/src/parser.cpp,
-				vio2sf/melonDS/teakra/src/pmu.md,
-				vio2sf/melonDS/teakra/src/processor_general.md,
-				vio2sf/melonDS/teakra/src/processor.cpp,
-				vio2sf/melonDS/teakra/src/README.md,
-				vio2sf/melonDS/teakra/src/register.md,
-				vio2sf/melonDS/teakra/src/sio.md,
-				vio2sf/melonDS/teakra/src/step2_test_generator/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/step2_test_generator/main.cpp,
-				vio2sf/melonDS/teakra/src/teakra_c.cpp,
-				vio2sf/melonDS/teakra/src/teakra.cpp,
-				vio2sf/melonDS/teakra/src/test_generator.cpp,
-				vio2sf/melonDS/teakra/src/test_generator/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/test_generator/main.cpp,
-				vio2sf/melonDS/teakra/src/test_verifier/CMakeLists.txt,
-				vio2sf/melonDS/teakra/src/test_verifier/main.cpp,
-				vio2sf/melonDS/teakra/src/timer.cpp,
-				vio2sf/melonDS/teakra/src/timer.md,
-				vio2sf/melonDS/teakra/teakra_LICENSE,
-				"vio2sf/melonDS/tiny-AES-c/README.md",
-				vio2sf/melonDS/version.h.in,
-			);
-			target = 83DE0C05180A9BD400269051 /* vio2sf */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		83051F552F4C0A60004C0413 /* src */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (838F20F52F4C677E001DBA18 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = src; sourceTree = "<group>"; };
-		83051F8C2F4C0A6C004C0413 /* include */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (83051FA62F4C0AD6004C0413 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = include; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		83DE0C02180A9BD400269051 /* Frameworks */ = {
@@ -260,8 +407,8 @@
 		83DE0C0F180A9BD400269051 /* vio2sf */ = {
 			isa = PBXGroup;
 			children = (
-				83051F8C2F4C0A6C004C0413 /* include */,
-				83051F552F4C0A60004C0413 /* src */,
+				CC0000152F40 /* include */,
+				CC0000012F40 /* src */,
 				83DE0C10180A9BD400269051 /* Supporting Files */,
 			);
 			path = vio2sf;
@@ -276,6 +423,427 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CC0000042F40 /* ARMJIT_x64 */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00B62F40 /* ARMJIT_Offsets.h */,
+			);
+			path = ARMJIT_x64;
+			sourceTree = "<group>";
+		};
+		CC0000052F40 /* DSP_HLE */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00912F40 /* AACUcode.h */,
+				BBF00922F40 /* G711Ucode.h */,
+				BBF00932F40 /* GraphicsUcode.h */,
+				BBF00942F40 /* UcodeBase.h */,
+			);
+			path = DSP_HLE;
+			sourceTree = "<group>";
+		};
+		CC0000062F40 /* blip-buf */ = {
+			isa = PBXGroup;
+			children = (
+				BBF006B2F40 /* blip_buf.c */,
+				BBF00902F40 /* blip_buf.h */,
+			);
+			path = blip-buf;
+			sourceTree = "<group>";
+		};
+		CC0000072F40 /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00BB2F40 /* hexutil.h */,
+			);
+			path = debug;
+			sourceTree = "<group>";
+		};
+		CC0000082F40 /* dolphin */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00B22F40 /* Align.h */,
+				BBF00B32F40 /* BitUtils.h */,
+				BBF00B42F40 /* CPUDetect.h */,
+				BBF00732F40 /* CommonFuncs.cpp */,
+				BBF00B52F40 /* MathUtil.h */,
+			);
+			path = dolphin;
+			sourceTree = "<group>";
+		};
+		CC0000092F40 /* fatfs */ = {
+			isa = PBXGroup;
+			children = (
+				BBF006D2F40 /* ff.c */,
+				BBF006F2F40 /* ffsystem.c */,
+				BBF00712F40 /* ffunicode.c */,
+			);
+			path = fatfs;
+			sourceTree = "<group>";
+		};
+		CC00000A2F40 /* sha1 */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00752F40 /* sha1.c */,
+				BBF00B72F40 /* sha1.h */,
+				BBF00B82F40 /* sha1.hpp */,
+			);
+			path = sha1;
+			sourceTree = "<group>";
+		};
+		CC00000D2F40 /* catch */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00992F40 /* catch.hpp */,
+			);
+			path = catch;
+			sourceTree = "<group>";
+		};
+		CC00000C2F40 /* externals */ = {
+			isa = PBXGroup;
+			children = (
+				CC00000D2F40 /* catch */,
+			);
+			path = externals;
+			sourceTree = "<group>";
+		};
+		CC00000F2F40 /* teakra */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00952F40 /* disassembler.h */,
+				BBF00962F40 /* disassembler_c.h */,
+				BBF00972F40 /* teakra.h */,
+				BBF00982F40 /* teakra_c.h */,
+			);
+			path = teakra;
+			sourceTree = "<group>";
+		};
+		CC00000E2F40 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				CC00000F2F40 /* teakra */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		CC0000112F40 /* coff_reader */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00B02F40 /* coff.h */,
+			);
+			path = coff_reader;
+			sourceTree = "<group>";
+		};
+		CC0000122F40 /* makedsp1 */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00B12F40 /* sha256.h */,
+			);
+			path = makedsp1;
+			sourceTree = "<group>";
+		};
+		CC0000102F40 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000112F40 /* coff_reader */,
+				CC0000122F40 /* makedsp1 */,
+				BBF009A2F40 /* ahbm.h */,
+				BBF009B2F40 /* apbp.h */,
+				BBF009C2F40 /* bit.h */,
+				BBF009D2F40 /* btdmp.h */,
+				BBF009E2F40 /* common_types.h */,
+				BBF009F2F40 /* core_timing.h */,
+				BBF00A02F40 /* crash.h */,
+				BBF00A12F40 /* decoder.h */,
+				BBF00A22F40 /* icu.h */,
+				BBF00A32F40 /* interpreter.h */,
+				BBF00A42F40 /* matcher.h */,
+				BBF00A52F40 /* memory_interface.h */,
+				BBF00A62F40 /* mmio.h */,
+				BBF00A72F40 /* operand.h */,
+				BBF00A82F40 /* parser.h */,
+				BBF00A92F40 /* processor.h */,
+				BBF00AA2F40 /* register.h */,
+				BBF00AB2F40 /* shared_memory.h */,
+				BBF00AC2F40 /* teakra_dma.h */,
+				BBF00AD2F40 /* test.h */,
+				BBF00AE2F40 /* test_generator.h */,
+				BBF00AF2F40 /* timer.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		CC00000B2F40 /* teakra */ = {
+			isa = PBXGroup;
+			children = (
+				CC00000C2F40 /* externals */,
+				CC00000E2F40 /* include */,
+				CC0000102F40 /* src */,
+			);
+			path = teakra;
+			sourceTree = "<group>";
+		};
+		CC0000132F40 /* tiny-AES-c */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00792F40 /* aes.c */,
+			);
+			path = tiny-AES-c;
+			sourceTree = "<group>";
+		};
+		CC0000142F40 /* xxhash */ = {
+			isa = PBXGroup;
+			children = (
+				BBF00B92F40 /* xxh3.h */,
+				BBF00772F40 /* xxhash.c */,
+				BBF00BA2F40 /* xxhash.h */,
+			);
+			path = xxhash;
+			sourceTree = "<group>";
+		};
+		CC0000032F40 /* melonDS */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000042F40 /* ARMJIT_x64 */,
+				CC0000052F40 /* DSP_HLE */,
+				CC0000062F40 /* blip-buf */,
+				CC0000072F40 /* debug */,
+				CC0000082F40 /* dolphin */,
+				CC0000092F40 /* fatfs */,
+				CC00000A2F40 /* sha1 */,
+				CC00000B2F40 /* teakra */,
+				CC0000132F40 /* tiny-AES-c */,
+				CC0000142F40 /* xxhash */,
+				BBF00052F40 /* ARCodeFile.cpp */,
+				BBF00072F40 /* ARDatabaseDAT.cpp */,
+				BBF007B2F40 /* ARDatabaseDAT.h */,
+				BBF00092F40 /* AREngine.cpp */,
+				BBF000B2F40 /* ARM.cpp */,
+				BBF000D2F40 /* ARMInterpreter.cpp */,
+				BBF000F2F40 /* ARMInterpreter_ALU.cpp */,
+				BBF007C2F40 /* ARMInterpreter_ALU.h */,
+				BBF00112F40 /* ARMInterpreter_Branch.cpp */,
+				BBF007D2F40 /* ARMInterpreter_Branch.h */,
+				BBF00132F40 /* ARMInterpreter_LoadStore.cpp */,
+				BBF007E2F40 /* ARMInterpreter_LoadStore.h */,
+				BBF00152F40 /* ARMJIT.cpp */,
+				BBF00172F40 /* ARMJIT_ALU.cpp */,
+				BBF00192F40 /* ARMJIT_Branch.cpp */,
+				BBF001B2F40 /* ARMJIT_Compiler.cpp */,
+				BBF001D2F40 /* ARMJIT_Global.cpp */,
+				BBF001F2F40 /* ARMJIT_Linkage.S */,
+				BBF00212F40 /* ARMJIT_LoadStore.cpp */,
+				BBF00232F40 /* ARMJIT_Memory.cpp */,
+				BBF00252F40 /* ARM_InstrInfo.cpp */,
+				BBF007F2F40 /* ARM_InstrTable.h */,
+				BBF00272F40 /* Arm64Emitter.cpp */,
+				BBF00292F40 /* CP15.cpp */,
+				BBF002B2F40 /* CRC32.cpp */,
+				BBF002D2F40 /* DMA.cpp */,
+				BBF002F2F40 /* DMA_Timings.cpp */,
+				BBF00802F40 /* DMA_Timings.h */,
+				BBF00312F40 /* FATIO.cpp */,
+				BBF00332F40 /* FATStorage.cpp */,
+				BBF00352F40 /* FreeBIOS.cpp */,
+				BBF00812F40 /* FreeBIOS_Data.h */,
+				BBF00372F40 /* GBACart.cpp */,
+				BBF00392F40 /* GBACartMotionPak.cpp */,
+				BBF003B2F40 /* GPU.cpp */,
+				BBF003D2F40 /* GPU2D.cpp */,
+				BBF00822F40 /* GPU2D_OpenGL.h */,
+				BBF003F2F40 /* GPU2D_Soft.cpp */,
+				BBF00412F40 /* GPU3D.cpp */,
+				BBF00832F40 /* GPU3D_Compute.h */,
+				BBF00842F40 /* GPU3D_Compute_shaders.h */,
+				BBF00852F40 /* GPU3D_OpenGL.h */,
+				BBF00432F40 /* GPU3D_Soft.cpp */,
+				BBF00452F40 /* GPU3D_Texcache.cpp */,
+				BBF00862F40 /* GPU3D_Texcache.h */,
+				BBF00872F40 /* GPU3D_TexcacheOpenGL.h */,
+				BBF00882F40 /* GPU_ColorOp.h */,
+				BBF00892F40 /* GPU_OpenGL.h */,
+				BBF00472F40 /* GPU_Soft.cpp */,
+				BBF00492F40 /* MathUtil.cpp */,
+				BBF004B2F40 /* Mic.cpp */,
+				BBF004D2F40 /* NDS.cpp */,
+				BBF004F2F40 /* NDSCart.cpp */,
+				BBF00512F40 /* NDSCartR4.cpp */,
+				BBF008A2F40 /* OpenGLSupport.h */,
+				BBF008B2F40 /* PlatformOGL.h */,
+				BBF00532F40 /* ROMList.cpp */,
+				BBF00552F40 /* RTC.cpp */,
+				BBF00572F40 /* SPI.cpp */,
+				BBF00592F40 /* SPI_Firmware.cpp */,
+				BBF005B2F40 /* SPU.cpp */,
+				BBF005D2F40 /* Savestate.cpp */,
+				BBF005F2F40 /* Utils.cpp */,
+				BBF008C2F40 /* Utils.h */,
+				BBF00612F40 /* Wifi.cpp */,
+				BBF00632F40 /* WifiAP.cpp */,
+				BBF008D2F40 /* WifiAP.h */,
+				BBF008E2F40 /* melonDLDI.h */,
+				BBF008F2F40 /* version.h */,
+				BBF00652F40 /* x64ABI.cpp */,
+				BBF00672F40 /* x64CPUDetect.cpp */,
+				BBF00692F40 /* x64Emitter.cpp */,
+			);
+			path = melonDS;
+			sourceTree = "<group>";
+		};
+		CC0000022F40 /* vio2sf */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000032F40 /* melonDS */,
+				BBF00012F40 /* Platform.mm */,
+				BBF00032F40 /* Platform_AAC.cpp */,
+			);
+			path = vio2sf;
+			sourceTree = "<group>";
+		};
+		CC0000012F40 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000022F40 /* vio2sf */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		CC0000172F40 /* ARMJIT_A64 */ = {
+			isa = PBXGroup;
+			children = (
+				BBF01422F40 /* ARMJIT_Compiler_A64.h */,
+			);
+			path = ARMJIT_A64;
+			sourceTree = "<group>";
+		};
+		CC0000182F40 /* ARMJIT_x64 */ = {
+			isa = PBXGroup;
+			children = (
+				BBF01402F40 /* ARMJIT_Compiler_x64.h */,
+			);
+			path = ARMJIT_x64;
+			sourceTree = "<group>";
+		};
+		CC0000192F40 /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				BBF01482F40 /* GdbArch.h */,
+				BBF014A2F40 /* GdbCmds.h */,
+				BBF014C2F40 /* GdbStub.h */,
+			);
+			path = debug;
+			sourceTree = "<group>";
+		};
+		CC00001A2F40 /* dolphin */ = {
+			isa = PBXGroup;
+			children = (
+				BBF01322F40 /* Arm64Emitter.h */,
+				BBF01342F40 /* BitSet.h */,
+				BBF01362F40 /* CommonFuncs.h */,
+				BBF01382F40 /* Compat.h */,
+				BBF013A2F40 /* x64ABI.h */,
+				BBF013C2F40 /* x64Emitter.h */,
+				BBF013E2F40 /* x64Reg.h */,
+			);
+			path = dolphin;
+			sourceTree = "<group>";
+		};
+		CC00001B2F40 /* fatfs */ = {
+			isa = PBXGroup;
+			children = (
+				BBF012C2F40 /* diskio.h */,
+				BBF012E2F40 /* ff.h */,
+				BBF01302F40 /* ffconf.h */,
+			);
+			path = fatfs;
+			sourceTree = "<group>";
+		};
+		CC00001C2F40 /* tiny-AES-c */ = {
+			isa = PBXGroup;
+			children = (
+				BBF01442F40 /* aes.h */,
+				BBF01462F40 /* aes.hpp */,
+			);
+			path = tiny-AES-c;
+			sourceTree = "<group>";
+		};
+		CC0000162F40 /* vio2sf */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000172F40 /* ARMJIT_A64 */,
+				CC0000182F40 /* ARMJIT_x64 */,
+				CC0000192F40 /* debug */,
+				CC00001A2F40 /* dolphin */,
+				CC00001B2F40 /* fatfs */,
+				CC00001C2F40 /* tiny-AES-c */,
+				BBF00BC2F40 /* ARCodeFile.h */,
+				BBF00BE2F40 /* AREngine.h */,
+				BBF00C02F40 /* ARM.h */,
+				BBF00C22F40 /* ARMInterpreter.h */,
+				BBF00C42F40 /* ARMJIT.h */,
+				BBF00C62F40 /* ARMJIT_Compiler.h */,
+				BBF00C82F40 /* ARMJIT_Global.h */,
+				BBF00CA2F40 /* ARMJIT_Internal.h */,
+				BBF00CC2F40 /* ARMJIT_Memory.h */,
+				BBF00CE2F40 /* ARMJIT_RegisterCache.h */,
+				BBF00D02F40 /* ARM_InstrInfo.h */,
+				BBF00D22F40 /* Args.h */,
+				BBF00D42F40 /* ArmCommon.h */,
+				BBF00D62F40 /* CRC32.h */,
+				BBF00D82F40 /* DMA.h */,
+				BBF00DA2F40 /* DSi.h */,
+				BBF00DC2F40 /* DSi_AES.h */,
+				BBF00DE2F40 /* DSi_Camera.h */,
+				BBF00E02F40 /* DSi_DSP.h */,
+				BBF00E22F40 /* DSi_I2C.h */,
+				BBF00E42F40 /* DSi_I2S.h */,
+				BBF00E62F40 /* DSi_NAND.h */,
+				BBF00E82F40 /* DSi_NDMA.h */,
+				BBF00EA2F40 /* DSi_NWifi.h */,
+				BBF00EC2F40 /* DSi_SD.h */,
+				BBF00EE2F40 /* DSi_SPI_TSC.h */,
+				BBF00F02F40 /* DSi_TMD.h */,
+				BBF00F22F40 /* FATIO.h */,
+				BBF00F42F40 /* FATStorage.h */,
+				BBF00F62F40 /* FIFO.h */,
+				BBF00F82F40 /* FreeBIOS.h */,
+				BBF00FA2F40 /* GBACart.h */,
+				BBF00FC2F40 /* GPU.h */,
+				BBF00FE2F40 /* GPU2D.h */,
+				BBF01002F40 /* GPU2D_Soft.h */,
+				BBF01022F40 /* GPU3D.h */,
+				BBF01042F40 /* GPU3D_Soft.h */,
+				BBF01062F40 /* GPU_Soft.h */,
+				BBF01082F40 /* JitBlock.h */,
+				BBF010A2F40 /* MemConstants.h */,
+				BBF010C2F40 /* MemRegion.h */,
+				BBF010E2F40 /* Mic.h */,
+				BBF01102F40 /* NDS.h */,
+				BBF01122F40 /* NDSCart.h */,
+				BBF01142F40 /* NDS_Header.h */,
+				BBF01162F40 /* NonStupidBitfield.h */,
+				BBF01182F40 /* Platform.h */,
+				BBF011A2F40 /* ROMList.h */,
+				BBF011C2F40 /* RTC.h */,
+				BBF011E2F40 /* SPI.h */,
+				BBF01202F40 /* SPI_Firmware.h */,
+				BBF01222F40 /* SPU.h */,
+				BBF01242F40 /* Savestate.h */,
+				BBF01262F40 /* TinyVector.h */,
+				BBF01282F40 /* Wifi.h */,
+				BBF012A2F40 /* types.h */,
+			);
+			path = vio2sf;
+			sourceTree = "<group>";
+		};
+		CC0000152F40 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				CC0000162F40 /* vio2sf */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -283,6 +851,79 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBB00BD2F40 /* ARCodeFile.h in Headers */,
+				BBB00BF2F40 /* AREngine.h in Headers */,
+				BBB00C12F40 /* ARM.h in Headers */,
+				BBB00C32F40 /* ARMInterpreter.h in Headers */,
+				BBB00C52F40 /* ARMJIT.h in Headers */,
+				BBB00C72F40 /* ARMJIT_Compiler.h in Headers */,
+				BBB00C92F40 /* ARMJIT_Global.h in Headers */,
+				BBB00CB2F40 /* ARMJIT_Internal.h in Headers */,
+				BBB00CD2F40 /* ARMJIT_Memory.h in Headers */,
+				BBB00CF2F40 /* ARMJIT_RegisterCache.h in Headers */,
+				BBB00D12F40 /* ARM_InstrInfo.h in Headers */,
+				BBB00D32F40 /* Args.h in Headers */,
+				BBB00D52F40 /* ArmCommon.h in Headers */,
+				BBB00D72F40 /* CRC32.h in Headers */,
+				BBB00D92F40 /* DMA.h in Headers */,
+				BBB00DB2F40 /* DSi.h in Headers */,
+				BBB00DD2F40 /* DSi_AES.h in Headers */,
+				BBB00DF2F40 /* DSi_Camera.h in Headers */,
+				BBB00E12F40 /* DSi_DSP.h in Headers */,
+				BBB00E32F40 /* DSi_I2C.h in Headers */,
+				BBB00E52F40 /* DSi_I2S.h in Headers */,
+				BBB00E72F40 /* DSi_NAND.h in Headers */,
+				BBB00E92F40 /* DSi_NDMA.h in Headers */,
+				BBB00EB2F40 /* DSi_NWifi.h in Headers */,
+				BBB00ED2F40 /* DSi_SD.h in Headers */,
+				BBB00EF2F40 /* DSi_SPI_TSC.h in Headers */,
+				BBB00F12F40 /* DSi_TMD.h in Headers */,
+				BBB00F32F40 /* FATIO.h in Headers */,
+				BBB00F52F40 /* FATStorage.h in Headers */,
+				BBB00F72F40 /* FIFO.h in Headers */,
+				BBB00F92F40 /* FreeBIOS.h in Headers */,
+				BBB00FB2F40 /* GBACart.h in Headers */,
+				BBB00FD2F40 /* GPU.h in Headers */,
+				BBB00FF2F40 /* GPU2D.h in Headers */,
+				BBB01012F40 /* GPU2D_Soft.h in Headers */,
+				BBB01032F40 /* GPU3D.h in Headers */,
+				BBB01052F40 /* GPU3D_Soft.h in Headers */,
+				BBB01072F40 /* GPU_Soft.h in Headers */,
+				BBB01092F40 /* JitBlock.h in Headers */,
+				BBB010B2F40 /* MemConstants.h in Headers */,
+				BBB010D2F40 /* MemRegion.h in Headers */,
+				BBB010F2F40 /* Mic.h in Headers */,
+				BBB01112F40 /* NDS.h in Headers */,
+				BBB01132F40 /* NDSCart.h in Headers */,
+				BBB01152F40 /* NDS_Header.h in Headers */,
+				BBB01172F40 /* NonStupidBitfield.h in Headers */,
+				BBB01192F40 /* Platform.h in Headers */,
+				BBB011B2F40 /* ROMList.h in Headers */,
+				BBB011D2F40 /* RTC.h in Headers */,
+				BBB011F2F40 /* SPI.h in Headers */,
+				BBB01212F40 /* SPI_Firmware.h in Headers */,
+				BBB01232F40 /* SPU.h in Headers */,
+				BBB01252F40 /* Savestate.h in Headers */,
+				BBB01272F40 /* TinyVector.h in Headers */,
+				BBB01292F40 /* Wifi.h in Headers */,
+				BBB012B2F40 /* types.h in Headers */,
+				BBB012D2F40 /* diskio.h in Headers */,
+				BBB012F2F40 /* ff.h in Headers */,
+				BBB01312F40 /* ffconf.h in Headers */,
+				BBB01332F40 /* Arm64Emitter.h in Headers */,
+				BBB01352F40 /* BitSet.h in Headers */,
+				BBB01372F40 /* CommonFuncs.h in Headers */,
+				BBB01392F40 /* Compat.h in Headers */,
+				BBB013B2F40 /* x64ABI.h in Headers */,
+				BBB013D2F40 /* x64Emitter.h in Headers */,
+				BBB013F2F40 /* x64Reg.h in Headers */,
+				BBB01412F40 /* ARMJIT_Compiler_x64.h in Headers */,
+				BBB01432F40 /* ARMJIT_Compiler_A64.h in Headers */,
+				BBB01452F40 /* aes.h in Headers */,
+				BBB01472F40 /* aes.hpp in Headers */,
+				BBB01492F40 /* GdbArch.h in Headers */,
+				BBB014B2F40 /* GdbCmds.h in Headers */,
+				BBB014D2F40 /* GdbStub.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,10 +943,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				83051F552F4C0A60004C0413 /* src */,
-				83051F8C2F4C0A6C004C0413 /* include */,
-			);
 			name = vio2sf;
 			productName = vio2sf;
 			productReference = 83DE0C06180A9BD400269051 /* vio2sf.framework */;
@@ -318,7 +955,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 1520;
 				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = 83DE0C00180A9BD400269051 /* Build configuration list for PBXProject "vio2sf" */;
@@ -358,6 +995,67 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBB00022F40 /* Platform.mm in Sources */,
+				BBB00042F40 /* Platform_AAC.cpp in Sources */,
+				BBB00062F40 /* ARCodeFile.cpp in Sources */,
+				BBB00082F40 /* ARDatabaseDAT.cpp in Sources */,
+				BBB000A2F40 /* AREngine.cpp in Sources */,
+				BBB000C2F40 /* ARM.cpp in Sources */,
+				BBB000E2F40 /* ARMInterpreter.cpp in Sources */,
+				BBB00102F40 /* ARMInterpreter_ALU.cpp in Sources */,
+				BBB00122F40 /* ARMInterpreter_Branch.cpp in Sources */,
+				BBB00142F40 /* ARMInterpreter_LoadStore.cpp in Sources */,
+				BBB00162F40 /* ARMJIT.cpp in Sources */,
+				BBB00182F40 /* ARMJIT_ALU.cpp in Sources */,
+				BBB001A2F40 /* ARMJIT_Branch.cpp in Sources */,
+				BBB001C2F40 /* ARMJIT_Compiler.cpp in Sources */,
+				BBB001E2F40 /* ARMJIT_Global.cpp in Sources */,
+				BBB00202F40 /* ARMJIT_Linkage.S in Sources */,
+				BBB00222F40 /* ARMJIT_LoadStore.cpp in Sources */,
+				BBB00242F40 /* ARMJIT_Memory.cpp in Sources */,
+				BBB00262F40 /* ARM_InstrInfo.cpp in Sources */,
+				BBB00282F40 /* Arm64Emitter.cpp in Sources */,
+				BBB002A2F40 /* CP15.cpp in Sources */,
+				BBB002C2F40 /* CRC32.cpp in Sources */,
+				BBB002E2F40 /* DMA.cpp in Sources */,
+				BBB00302F40 /* DMA_Timings.cpp in Sources */,
+				BBB00322F40 /* FATIO.cpp in Sources */,
+				BBB00342F40 /* FATStorage.cpp in Sources */,
+				BBB00362F40 /* FreeBIOS.cpp in Sources */,
+				BBB00382F40 /* GBACart.cpp in Sources */,
+				BBB003A2F40 /* GBACartMotionPak.cpp in Sources */,
+				BBB003C2F40 /* GPU.cpp in Sources */,
+				BBB003E2F40 /* GPU2D.cpp in Sources */,
+				BBB00402F40 /* GPU2D_Soft.cpp in Sources */,
+				BBB00422F40 /* GPU3D.cpp in Sources */,
+				BBB00442F40 /* GPU3D_Soft.cpp in Sources */,
+				BBB00462F40 /* GPU3D_Texcache.cpp in Sources */,
+				BBB00482F40 /* GPU_Soft.cpp in Sources */,
+				BBB004A2F40 /* MathUtil.cpp in Sources */,
+				BBB004C2F40 /* Mic.cpp in Sources */,
+				BBB004E2F40 /* NDS.cpp in Sources */,
+				BBB00502F40 /* NDSCart.cpp in Sources */,
+				BBB00522F40 /* NDSCartR4.cpp in Sources */,
+				BBB00542F40 /* ROMList.cpp in Sources */,
+				BBB00562F40 /* RTC.cpp in Sources */,
+				BBB00582F40 /* SPI.cpp in Sources */,
+				BBB005A2F40 /* SPI_Firmware.cpp in Sources */,
+				BBB005C2F40 /* SPU.cpp in Sources */,
+				BBB005E2F40 /* Savestate.cpp in Sources */,
+				BBB00602F40 /* Utils.cpp in Sources */,
+				BBB00622F40 /* Wifi.cpp in Sources */,
+				BBB00642F40 /* WifiAP.cpp in Sources */,
+				BBB00662F40 /* x64ABI.cpp in Sources */,
+				BBB00682F40 /* x64CPUDetect.cpp in Sources */,
+				BBB006A2F40 /* x64Emitter.cpp in Sources */,
+				BBB006C2F40 /* blip_buf.c in Sources */,
+				BBB006E2F40 /* ff.c in Sources */,
+				BBB00702F40 /* ffsystem.c in Sources */,
+				BBB00722F40 /* ffunicode.c in Sources */,
+				BBB00742F40 /* CommonFuncs.cpp in Sources */,
+				BBB00762F40 /* sha1.c in Sources */,
+				BBB00782F40 /* xxhash.c in Sources */,
+				BBB007A2F40 /* aes.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +1132,6 @@
 				OTHER_CFLAGS = "-Wframe-larger-than=4000";
 				OTHER_CPLUSPLUSFLAGS = "-Wframe-larger-than=16000";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Debug;
 		};
@@ -488,7 +1185,6 @@
 				OTHER_CFLAGS = "-Wframe-larger-than=4000";
 				OTHER_CPLUSPLUSFLAGS = "-Wframe-larger-than=16000";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Release;
 		};
@@ -498,15 +1194,22 @@
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = "vio2sf/vio2sf-Info.plist";
-				INSTALL_PATH = "@rpath";
-				PRODUCT_BUNDLE_IDENTIFIER = net.kode54.vio2sf;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.vgmrips.vio2sf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -518,15 +1221,22 @@
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = "vio2sf/vio2sf-Info.plist";
-				INSTALL_PATH = "@rpath";
-				PRODUCT_BUNDLE_IDENTIFIER = net.kode54.vio2sf;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.vgmrips.vio2sf";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};

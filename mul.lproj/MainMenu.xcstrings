@@ -37,6 +37,18 @@
         }
       }
     },
+    "2ha-ys-sRi.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Table View Cell\"; ObjectID = \"2ha-ys-sRi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Table View Cell"
+          }
+        }
+      }
+    },
     "2qB-Bq-t2u.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Remove Duplicate Items\"; ObjectID = \"2qB-Bq-t2u\";",
       "extractionState" : "extracted_with_value",
@@ -244,6 +256,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restablecer el recuento de reproducciones"
+          }
+        }
+      }
+    },
+    "9df-mL-Zgx.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"9df-mL-Zgx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
           }
         }
       }
@@ -3991,6 +4015,18 @@
         }
       }
     },
+    "Bhh-hp-xx3.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"Bhh-hp-xx3\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
     "bQV-ZD-SDv.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"🎵\"; ObjectID = \"bQV-ZD-SDv\";",
       "extractionState" : "extracted_with_value",
@@ -4018,6 +4054,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Celda de vista de tabla"
+          }
+        }
+      }
+    },
+    "cAf-1y-D7M.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Table View Cell\"; ObjectID = \"cAf-1y-D7M\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Table View Cell"
+          }
+        }
+      }
+    },
+    "DDa-1D-XYS.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Table View Cell\"; ObjectID = \"DDa-1D-XYS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Table View Cell"
+          }
+        }
+      }
+    },
+    "DdU-ro-7Yi.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Table View Cell\"; ObjectID = \"DdU-ro-7Yi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Table View Cell"
           }
         }
       }
@@ -4130,6 +4202,18 @@
         }
       }
     },
+    "HJL-T1-ufx.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Table View Cell\"; ObjectID = \"HJL-T1-ufx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Table View Cell"
+          }
+        }
+      }
+    },
     "HK9-Am-31h.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Reload Info\"; ObjectID = \"HK9-Am-31h\";",
       "extractionState" : "extracted_with_value",
@@ -4193,6 +4277,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Celda de vista de tabla"
+          }
+        }
+      }
+    },
+    "JX7-wV-kUU.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"JX7-wV-kUU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
           }
         }
       }
@@ -4476,6 +4572,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Analizador"
+          }
+        }
+      }
+    },
+    "ols-kE-jvg.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"ols-kE-jvg\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
           }
         }
       }
@@ -4818,6 +4926,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Celda de vista de tabla"
+          }
+        }
+      }
+    },
+    "vAq-NH-dpx.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"vAq-NH-dpx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
           }
         }
       }

@@ -22,19 +22,25 @@
 - (void)updatePath {
 	if(!url) return;
 
+	// Pre-fetch all needed resource keys so the enumerator caches them (avoids per-file stat/I/O)
+	NSArray *resourceKeys = @[NSURLNameKey, NSURLIsDirectoryKey, NSURLIsAliasFileKey, NSURLLocalizedNameKey];
 	NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:url
-	                                                         includingPropertiesForKeys:@[NSURLNameKey, NSURLIsDirectoryKey]
+	                                                         includingPropertiesForKeys:resourceKeys
 	                                                                            options:(NSDirectoryEnumerationSkipsSubdirectoryDescendants | NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles)
 	                                                                       errorHandler:^BOOL(NSURL *url, NSError *error) {
 		                                                                       return NO;
 	                                                                       }];
-	NSMutableArray *fullPaths = [NSMutableArray new];
+	NSMutableArray<NSURL *> *urls = [NSMutableArray new];
 
 	for(NSURL *theUrl in enumerator) {
-		[fullPaths addObject:[theUrl path]];
+		[urls addObject:theUrl];
 	}
 
-	[self processPaths:[fullPaths sortedArrayUsingSelector:@selector(finderCompare:)]];
+	[urls sortUsingComparator:^NSComparisonResult(NSURL *a, NSURL *b) {
+		return [[a path] finderCompare:[b path]];
+	}];
+
+	[self processURLs:urls];
 }
 
 @end

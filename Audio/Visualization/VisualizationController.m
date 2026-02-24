@@ -124,7 +124,7 @@
 }
 
 - (void)postLatency:(double)latency {
-	if((latency >= 45.0) || (latency < 0.0)) [[clang::unlikely]] {
+	if((latency >= 45.0) || (latency < 0.0)) {
 		ignoreLatency = YES;
 		self->latency = latency;
 	} else {

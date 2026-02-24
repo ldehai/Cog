@@ -44,6 +44,8 @@ static NSURL *defaultMusicDirectory(void) {
 @implementation FileTreeDataSource {
 	PathNode *rootNode;
 	const void *_sbHandle;
+	NSTimer *_fsEventTimer;
+	NSMutableSet<NSString *> *_pendingChangePaths;
 }
 
 + (void)initialize {
@@ -153,21 +155,46 @@ static NSURL *defaultMusicDirectory(void) {
 		return;
 	}
 	DLog(@"PATH DID CHANGE: %@", path);
-	// Need to find the corresponding node...and call [node reloadPath], then [self reloadPathNode:node]
-	PathNode *node;
-	do {
-		node = [self nodeForPath:path];
-		path = [path stringByDeletingLastPathComponent];
-		if(!path || [path length] < 2) return;
-	} while(!node);
 
-	if(flags & kFSEventStreamEventFlagItemRemoved) {
-		DLog(@"Removing node: %@", node);
-		PathNode *parentNode = [self nodeForPath:path];
-		[parentNode updatePath];
-		[self reloadPathNode:parentNode];
-	} else {
-		DLog(@"NODE IS: %@", node);
+	// Debounce: collect changed parent directories and process after a delay
+	// This coalesces rapid FS events (e.g. copying many files) into a single reload
+	if(!_pendingChangePaths) {
+		_pendingChangePaths = [NSMutableSet new];
+	}
+	[_pendingChangePaths addObject:[path stringByDeletingLastPathComponent]];
+
+	[_fsEventTimer invalidate];
+	_fsEventTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+	                                                target:self
+	                                              selector:@selector(processPendingFSEvents)
+	                                              userInfo:nil
+	                                               repeats:NO];
+}
+
+- (void)processPendingFSEvents {
+	NSSet<NSString *> *parentPaths = _pendingChangePaths;
+	_pendingChangePaths = nil;
+	_fsEventTimer = nil;
+
+	NSMutableSet *reloadedNodes = [NSMutableSet new];
+
+	for(NSString *parentPath in parentPaths) {
+		// Walk up to find the nearest existing node in the tree
+		NSString *lookupPath = parentPath;
+		PathNode *node = nil;
+		while(lookupPath && [lookupPath length] >= 2) {
+			node = [self nodeForPath:lookupPath];
+			if(node) break;
+			lookupPath = [lookupPath stringByDeletingLastPathComponent];
+		}
+
+		if(!node) continue;
+
+		// Skip if we already reloaded this node (dedup multiple changes in same folder)
+		NSValue *nodeKey = [NSValue valueWithNonretainedObject:node];
+		if([reloadedNodes containsObject:nodeKey]) continue;
+		[reloadedNodes addObject:nodeKey];
+
 		[node updatePath];
 		[self reloadPathNode:node];
 	}

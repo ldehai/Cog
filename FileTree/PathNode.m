@@ -58,13 +58,12 @@ NSURL *resolveAliases(NSURL *url) {
 - (void)setURL:(NSURL *)u {
 	url = u;
 
-	display = [[NSFileManager defaultManager] displayNameAtPath:[u path]];
-
 	lastPathComponent = [[u path] lastPathComponent];
 
-	icon = [[NSWorkspace sharedWorkspace] iconForFile:[url path]];
-
-	[icon setSize:NSMakeSize(16.0, 16.0)];
+	// Reset lazy-loaded properties
+	display = nil;
+	icon = nil;
+	iconLoaded = NO;
 }
 
 - (NSURL *)URL {
@@ -74,9 +73,23 @@ NSURL *resolveAliases(NSURL *url) {
 - (void)updatePath {
 }
 
+// Cache supported file types as NSSet for O(1) lookups instead of O(n) NSArray scans
+static NSSet *sCachedFileTypes = nil;
+static NSSet *sCachedContainerTypes = nil;
+static dispatch_once_t sFileTypesOnceToken;
+
+static void ensureFileTypeCaches(void) {
+	dispatch_once(&sFileTypesOnceToken, ^{
+		sCachedFileTypes = [NSSet setWithArray:[AudioPlayer fileTypes]];
+		sCachedContainerTypes = [NSSet setWithArray:[AudioPlayer containerTypes]];
+	});
+}
+
 - (void)processPaths:(NSArray *)contents {
 	NSMutableArray *newSubpathsDirs = [NSMutableArray new];
 	NSMutableArray *newSubpaths = [NSMutableArray new];
+
+	ensureFileTypeCaches();
 
 	for(NSString *s in contents) {
 		if([s characterAtIndex:0] == '.') {
@@ -88,9 +101,12 @@ NSURL *resolveAliases(NSURL *url) {
 
 		PathNode *newNode;
 
-		// DLog(@"Before: %@", u);
-		u = resolveAliases(u);
-		// DLog(@"After: %@", u);
+		// Only resolve aliases if the file is actually an alias (avoids expensive bookmark API calls)
+		NSNumber *isAliasValue = nil;
+		[u getResourceValue:&isAliasValue forKey:NSURLIsAliasFileKey error:nil];
+		if([isAliasValue boolValue]) {
+			u = resolveAliases(u);
+		}
 
 		BOOL isDir;
 
@@ -101,16 +117,84 @@ NSURL *resolveAliases(NSURL *url) {
 		} else {
 			[[NSFileManager defaultManager] fileExistsAtPath:[u path] isDirectory:&isDir];
 
-			if(!isDir && ![[AudioPlayer fileTypes] containsObject:[[u pathExtension] lowercaseString]]) {
+			if(!isDir && ![sCachedFileTypes containsObject:[[u pathExtension] lowercaseString]]) {
 				continue;
 			}
 
 			if(isDir) {
 				newNode = [[DirectoryNode alloc] initWithDataSource:dataSource url:u];
-			} else if([[AudioPlayer containerTypes] containsObject:[[u pathExtension] lowercaseString]]) {
+			} else if([sCachedContainerTypes containsObject:[[u pathExtension] lowercaseString]]) {
 				newNode = [[ContainerNode alloc] initWithDataSource:dataSource url:u];
 			} else {
 				newNode = [[FileNode alloc] initWithDataSource:dataSource url:u];
+			}
+		}
+
+		[newNode setDisplay:displayName];
+
+		if(isDir)
+			[newSubpathsDirs addObject:newNode];
+		else
+			[newSubpaths addObject:newNode];
+	}
+
+	[newSubpathsDirs addObjectsFromArray:newSubpaths];
+	[self setSubpaths:newSubpathsDirs];
+}
+
+- (void)processURLs:(NSArray<NSURL *> *)urls {
+	NSMutableArray *newSubpathsDirs = [NSMutableArray new];
+	NSMutableArray *newSubpaths = [NSMutableArray new];
+
+	ensureFileTypeCaches();
+
+	for(NSURL *u in urls) {
+		NSString *name = nil;
+		[u getResourceValue:&name forKey:NSURLNameKey error:nil];
+		if([name length] > 0 && [name characterAtIndex:0] == '.') continue;
+
+		// Use pre-fetched localized name from directory enumerator (no extra disk I/O)
+		NSString *displayName = nil;
+		[u getResourceValue:&displayName forKey:NSURLLocalizedNameKey error:nil];
+		if(!displayName) displayName = name;
+
+		// Only resolve aliases if the file is actually an alias
+		NSNumber *isAliasValue = nil;
+		[u getResourceValue:&isAliasValue forKey:NSURLIsAliasFileKey error:nil];
+		NSURL *resolvedURL = u;
+		if([isAliasValue boolValue]) {
+			resolvedURL = resolveAliases(u);
+		}
+
+		PathNode *newNode;
+		BOOL isDir;
+
+		NSString *ext = [[u pathExtension] lowercaseString];
+		if([ext isEqualToString:@"savedsearch"]) {
+			DLog(@"Smart folder!");
+			newNode = [[SmartFolderNode alloc] initWithDataSource:dataSource url:resolvedURL];
+			isDir = NO;
+		} else {
+			// Use pre-fetched directory flag (no extra stat() call for non-alias files)
+			if(resolvedURL == u) {
+				NSNumber *isDirValue = nil;
+				[u getResourceValue:&isDirValue forKey:NSURLIsDirectoryKey error:nil];
+				isDir = [isDirValue boolValue];
+			} else {
+				// Alias was resolved to a different URL; need fresh stat
+				[[NSFileManager defaultManager] fileExistsAtPath:[resolvedURL path] isDirectory:&isDir];
+			}
+
+			if(!isDir && ![sCachedFileTypes containsObject:ext]) {
+				continue;
+			}
+
+			if(isDir) {
+				newNode = [[DirectoryNode alloc] initWithDataSource:dataSource url:resolvedURL];
+			} else if([sCachedContainerTypes containsObject:ext]) {
+				newNode = [[ContainerNode alloc] initWithDataSource:dataSource url:resolvedURL];
+			} else {
+				newNode = [[FileNode alloc] initWithDataSource:dataSource url:resolvedURL];
 			}
 		}
 
@@ -160,10 +244,18 @@ NSURL *resolveAliases(NSURL *url) {
 }
 
 - (NSString *)display {
+	if(!display && url) {
+		display = [[NSFileManager defaultManager] displayNameAtPath:[url path]];
+	}
 	return display;
 }
 
 - (NSImage *)icon {
+	if(!iconLoaded) {
+		icon = [[NSWorkspace sharedWorkspace] iconForFile:[url path]];
+		[icon setSize:NSMakeSize(16.0, 16.0)];
+		iconLoaded = YES;
+	}
 	return icon;
 }
 
