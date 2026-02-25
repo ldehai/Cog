@@ -11,6 +11,8 @@ class VolumeSliderToolbarItem: NSToolbarItem {
 
     private var containerView: NSView?
     private var didWrapView = false
+    private var hSlider: NSSlider?
+    private var observation: NSKeyValueObservation?
 
     override var minSize: NSSize {
         get { return NSSize(width: 120, height: 28) }
@@ -33,14 +35,55 @@ class VolumeSliderToolbarItem: NSToolbarItem {
         guard !didWrapView, let button = self.view as? NSButton else { return }
         didWrapView = true
 
-        // Find the VolumeSlider that the button references via _popView outlet
-        guard let volumeSlider = button.value(forKey: "_popView") as? NSSlider else { return }
+        // Find the original VolumeSlider via VolumeButton's _popView ivar
+        let volumeSlider = button.value(forKey: "_popView") as? NSSlider
 
-        // Create a horizontal version of the volume slider
-        let hSlider = HorizontalVolumeSlider(volumeSlider: volumeSlider)
-        hSlider.translatesAutoresizingMaskIntoConstraints = false
+        // Create a new horizontal slider
+        let slider = VolumeHorizontalSlider()
+        slider.toolbarItem = self
+        slider.sliderType = .linear
+        slider.isVertical = false
+        slider.controlSize = .small
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.isContinuous = true
+        slider.minValue = 0
+        slider.maxValue = 100
 
-        // Left speaker icon (low volume / mute)
+        if let vs = volumeSlider {
+            slider.doubleValue = vs.doubleValue
+            slider.target = self
+            slider.action = #selector(horizontalSliderChanged(_:))
+
+            // Observe original slider value changes (from keyboard shortcuts, scroll, etc.)
+            observation = vs.observe(\.doubleValue, options: [.new]) { [weak slider] _, change in
+                if let newVal = change.newValue {
+                    DispatchQueue.main.async {
+                        slider?.doubleValue = newVal
+                    }
+                }
+            }
+
+            // Re-sync after all awakeFromNib calls have completed
+            // PlaybackController sets the real value in its own awakeFromNib,
+            // which may run after ours
+            DispatchQueue.main.async { [weak slider, weak vs] in
+                if let s = slider, let v = vs {
+                    s.doubleValue = v.doubleValue
+                }
+                // And once more slightly later to catch any late initialization
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak slider, weak vs] in
+                    if let s = slider, let v = vs {
+                        s.doubleValue = v.doubleValue
+                    }
+                }
+            }
+        } else {
+            slider.doubleValue = 55
+        }
+
+        self.hSlider = slider
+
+        // Left speaker icon (mute/low)
         let leftIcon = NSImageView()
         leftIcon.translatesAutoresizingMaskIntoConstraints = false
         leftIcon.image = NSImage(systemSymbolName: "speaker.fill", accessibilityDescription: "Low volume")
@@ -65,7 +108,7 @@ class VolumeSliderToolbarItem: NSToolbarItem {
         ])
 
         // Horizontal stack: [speaker_low] [slider] [speaker_high]
-        let stackView = NSStackView(views: [leftIcon, hSlider, rightIcon])
+        let stackView = NSStackView(views: [leftIcon, slider, rightIcon])
         stackView.orientation = .horizontal
         stackView.alignment = .centerY
         stackView.spacing = 4
@@ -83,48 +126,33 @@ class VolumeSliderToolbarItem: NSToolbarItem {
 
         self.containerView = container
         self.view = container
-    }
-}
 
-// A horizontal slider that mirrors the value of the original vertical VolumeSlider
-private class HorizontalVolumeSlider: NSSlider {
-
-    private weak var originalSlider: NSSlider?
-    private var observation: NSKeyValueObservation?
-
-    convenience init(volumeSlider: NSSlider) {
-        self.init()
-        self.originalSlider = volumeSlider
-        self.sliderType = .linear
-        self.isVertical = false
-        self.controlSize = .small
-        self.minValue = volumeSlider.minValue
-        self.maxValue = volumeSlider.maxValue
-        self.doubleValue = volumeSlider.doubleValue
-        self.isContinuous = true
-        self.target = self
-        self.action = #selector(sliderChanged(_:))
-
-        // Observe changes on the original slider to keep in sync
-        observation = volumeSlider.observe(\.doubleValue, options: [.new]) { [weak self] _, change in
-            if let newValue = change.newValue {
-                self?.doubleValue = newValue
-            }
-        }
+        // Store volumeSlider reference for the action
+        objc_setAssociatedObject(self, &kVolumeSliderKey, volumeSlider, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
-    @objc private func sliderChanged(_ sender: Any) {
-        guard let original = originalSlider else { return }
-        original.doubleValue = self.doubleValue
-        // Trigger the original action (changeVolume: on PlaybackController)
+    @objc fileprivate func horizontalSliderChanged(_ sender: NSSlider) {
+        guard let original = objc_getAssociatedObject(self, &kVolumeSliderKey) as? NSSlider else { return }
+        original.doubleValue = sender.doubleValue
+        // Use the original slider's target/action, or fall back to sendAction
         if let target = original.target, let action = original.action {
             _ = target.perform(action, with: original)
+        } else {
+            // Try sending action directly through responder chain
+            NSApp.sendAction(Selector(("changeVolume:")), to: nil, from: original)
         }
     }
+}
+
+// Custom NSSlider subclass that forwards scroll wheel events to the volume system
+private class VolumeHorizontalSlider: NSSlider {
+    weak var toolbarItem: VolumeSliderToolbarItem?
 
     override func scrollWheel(with event: NSEvent) {
-        let change = event.deltaY + event.deltaX
-        self.doubleValue += Double(change)
-        sliderChanged(self)
+        let change = Double(event.deltaY + event.deltaX)
+        self.doubleValue = max(self.minValue, min(self.maxValue, self.doubleValue + change))
+        toolbarItem?.horizontalSliderChanged(self)
     }
 }
+
+private var kVolumeSliderKey: UInt8 = 0

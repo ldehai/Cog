@@ -212,6 +212,7 @@
 		ED69CBC725BE32C00090B90D /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED69CBBF25BE328C0090B90D /* MASShortcut.framework */; };
 		ED69CBCA25BE32E80090B90D /* MASShortcut.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = ED69CBBF25BE328C0090B90D /* MASShortcut.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDAAA41F25A665C000731773 /* PositionSliderToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAAA41E25A665C000731773 /* PositionSliderToolbarItem.swift */; };
+		EDAAA42025A665C100731773 /* VolumeSliderToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAAA42125A665C100731773 /* VolumeSliderToolbarItem.swift */; };
 		F6F96719102C709000D2C9B4 /* NSString+FinderCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F96718102C709000D2C9B4 /* NSString+FinderCompare.m */; };
 /* End PBXBuildFile section */
 
@@ -2612,6 +2613,7 @@
 				837DC931285B3F790005C58A /* DataModel.xcdatamodeld in Sources */,
 				835FAC7927BCDF2A00BA8562 /* AVIFDecoder.m in Sources */,
 				EDAAA41F25A665C000731773 /* PositionSliderToolbarItem.swift in Sources */,
+				EDAAA42025A665C100731773 /* VolumeSliderToolbarItem.swift in Sources */,
 				1791FF900CB43A2C0070BC5C /* MediaKeysApplication.m in Sources */,
 				5604D45B0D60349B004F5C5D /* SpotlightWindowController.m in Sources */,
 				0A9CEA032861501700E47168 /* AboutWindowController.swift in Sources */,
@@ -3002,7 +3004,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ThirdParty/rubberband/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				OTHER_CFLAGS = (
 					"-D__MACOSX__",
 					"-DHAVE_CONFIG_H",
@@ -3067,7 +3069,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ThirdParty/rubberband/lib",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				OTHER_CFLAGS = (
 					"-D__MACOSX__",
 					"-DHAVE_CONFIG_H",
@@ -3214,8 +3216,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-
 
 /* Begin XCVersionGroup section */
 		837DC92F285B3F790005C58A /* DataModel.xcdatamodeld */ = {
