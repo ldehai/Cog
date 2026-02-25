@@ -12,8 +12,6 @@
 
 extern NSString *iTunesDropType;
 
-extern void showSentryConsent(NSWindow *window);
-
 @implementation MiniWindow
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)windowStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)deferCreation {
@@ -40,7 +38,7 @@ extern void showSentryConsent(NSWindow *window);
 	[self registerForDraggedTypes:@[NSPasteboardTypeFileURL, iTunesDropType]];
 
 	if([[NSUserDefaults standardUserDefaults] boolForKey:@"miniMode"]) {
-		showSentryConsent(self);
+		// Sentry consent removed
 	}
 }
 

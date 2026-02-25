@@ -34,8 +34,6 @@
 
 #import "FeedbackController.h"
 
-@import Sentry;
-
 void *kAppControllerContext = &kAppControllerContext;
 
 BOOL kAppControllerShuttingDown = NO;
@@ -357,43 +355,7 @@ static BOOL consentLastEnabled = NO;
     }
     
     if([keyPath isEqualToString:@"values.sentryConsented"]) {
-        BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"sentryConsented"];
-        if(enabled != consentLastEnabled) {
-            if(enabled) {
-                [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
-                    options.dsn = @"https://d70ca316b053af0573f4b48f742d4d8e@cog-analytics.losno.co/5";
-                    options.debug = YES; // Enabled debug when first installing is always helpful
-
-                    // Disable hang detection, lots of false positives still
-                    options.enableAppHangTracking = NO;
-
-                    // Enable logging
-                    // options.enableLogs = YES;
-
-                    options.configureProfiling = ^(SentryProfileOptions * _Nonnull profiling) {
-                        profiling.sessionSampleRate = 1.f;
-                        profiling.lifecycle = SentryProfileLifecycleTrace;
-                    };
-
-                    // And now to set up user feedback prompting
-                    options.onCrashedLastRun = ^void(SentryEvent * _Nonnull event) {
-                        // capture user feedback
-                        FeedbackController *fbcon = [FeedbackController new];
-                        [fbcon performSelectorOnMainThread:@selector(showWindow:) withObject:nil waitUntilDone:YES];
-                        if([fbcon waitForCompletion]) {
-                            SentryFeedback *feedback = [[SentryFeedback alloc] initWithMessage:[fbcon comments] name:[fbcon name] email:[fbcon email] source:SentryFeedbackSourceCustom associatedEventId:event.eventId attachments:nil];
-
-                            [SentrySDK captureFeedback:feedback];
-                        }
-                    };
-                }];
-            } else {
-                if([SentrySDK isEnabled]) {
-                    [SentrySDK close];
-                }
-            }
-            consentLastEnabled = enabled;
-        }
+        // Sentry removed — no-op
     } else if([keyPath isEqualToString:@"playlistController.currentEntry"]) {
         PlaylistEntry *entry = playlistController.currentEntry;
         NSString *appTitle = NSLocalizedString(@"CogTitle", @"");

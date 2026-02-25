@@ -1045,7 +1045,7 @@
                             </textFieldCell>
                         </textField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="3B680DEB-106E-4549-A478-FFB8A6738053" label="Volume" paletteLabel="Volume" image="volume3Template" bordered="YES" visibilityPriority="10" sizingBehavior="auto" id="1610">
+                    <toolbarItem implicitItemIdentifier="3B680DEB-106E-4549-A478-FFB8A6738053" label="Volume" paletteLabel="Volume" image="volume3Template" bordered="YES" visibilityPriority="10" sizingBehavior="auto" id="1610" customClass="VolumeSliderToolbarItem" customModule="Cog" customModuleProvider="target">
                         <nil key="toolTip"/>
                         <button key="view" verticalHuggingPriority="750" id="1608" customClass="VolumeButton">
                             <rect key="frame" x="9" y="14" width="29" height="23"/>
@@ -1235,8 +1235,6 @@
                 <defaultToolbarItems>
                     <toolbarItem reference="1539"/>
                     <toolbarItem reference="1610"/>
-                    <toolbarItem reference="1552"/>
-                    <toolbarItem reference="ufn-od-xJF"/>
                     <toolbarItem reference="1552"/>
                     <toolbarItem reference="1551"/>
                     <toolbarItem reference="1636"/>

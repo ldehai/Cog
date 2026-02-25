@@ -19,9 +19,7 @@
 
 #import "Logging.h"
 
-@import Sentry;
-
-// Sentry captureMessage is too spammy to use for anything but actual errors
+// Sentry removed
 
 extern BOOL kAppControllerShuttingDown;
 
@@ -327,7 +325,6 @@ NSDictionary *makeRGInfo(PlaylistEntry *pe) {
 	if(!pe.url) {
 		pe.error = YES;
 		pe.errorMessage = NSLocalizedStringFromTableInBundle(@"ErrorMessageBadFile", nil, [NSBundle bundleForClass:[self class]], @"");
-		[SentrySDK captureMessage:@"Attempted to play a bad file with no URL"];
 		return;
 	}
 
@@ -836,7 +833,6 @@ NSDictionary *makeRGInfo(PlaylistEntry *pe) {
 		//[SentrySDK captureMessage:[NSString stringWithFormat:@"Beginning decoding track: %@", pe.url]];
 		[player setNextStream:pe.url withUserInfo:pe withRGInfo:makeRGInfo(pe)];
 	} else if(pe) {
-		[SentrySDK captureMessage:@"Invalid playlist entry reached"];
 		[player setNextStream:nil];
 		pe.error = YES;
 		pe.errorMessage = NSLocalizedStringFromTableInBundle(@"ErrorMessageBadFile", nil, [NSBundle bundleForClass:[self class]], @"");

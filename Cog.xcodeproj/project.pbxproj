@@ -197,7 +197,6 @@
 		83DFCDA12E8532E5009E3DF1 /* nuked_sc55.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83DFCDA02E8532C1009E3DF1 /* nuked_sc55.framework */; };
 		83DFCDA22E8532E5009E3DF1 /* nuked_sc55.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 83DFCDA02E8532C1009E3DF1 /* nuked_sc55.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		83F9D8071A884C54007ABEC2 /* SilenceDecoder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83F9D7F61A884B46007ABEC2 /* SilenceDecoder.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		83F9FFEF2D6EB75B00026576 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 83F9FFEE2D6EB75B00026576 /* Sentry */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8E07AB790AAC930B00A4B32F /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E07AB770AAC930B00A4B32F /* PreferencesController.m */; };
 		8E75757109F31D5A0080F1EE /* DNDArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E75752C09F31D5A0080F1EE /* DNDArrayController.m */; };
@@ -1096,6 +1095,7 @@
 		ED69CBB825BE328C0090B90D /* MASShortcut.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MASShortcut.xcodeproj; path = Frameworks/shpakovski/MASShortcut/MASShortcut.xcodeproj; sourceTree = "<group>"; };
 		ED69CF0925BE74BB0090B90D /* Shortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shortcuts.h; path = Preferences/Shortcuts.h; sourceTree = "<group>"; };
 		EDAAA41E25A665C000731773 /* PositionSliderToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PositionSliderToolbarItem.swift; path = Window/PositionSliderToolbarItem.swift; sourceTree = "<group>"; };
+		EDAAA42125A665C100731773 /* VolumeSliderToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VolumeSliderToolbarItem.swift; path = Window/VolumeSliderToolbarItem.swift; sourceTree = "<group>"; };
 		F6F96718102C709000D2C9B4 /* NSString+FinderCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FinderCompare.m"; sourceTree = "<group>"; };
 		F6F9671A102C70C800D2C9B4 /* NSString+FinderCompare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FinderCompare.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1122,7 +1122,6 @@
 				839080562E88F5DE00D5D683 /* Cocoa.framework in Frameworks */,
 				17BB5CFA0B8A86350009ACB1 /* CoreAudio.framework in Frameworks */,
 				8366CB352E869980007DB8D2 /* Metal.framework in Frameworks */,
-				83F9FFEF2D6EB75B00026576 /* Sentry in Frameworks */,
 				17BB5CFB0B8A86350009ACB1 /* CoreAudioKit.framework in Frameworks */,
 				17BB5EA60B8A87850009ACB1 /* IOKit.framework in Frameworks */,
 			);
@@ -1430,6 +1429,7 @@
 				17E0D5E50F520F02005B6FED /* PositionSlider.h */,
 				17E0D5E60F520F02005B6FED /* PositionSlider.m */,
 				EDAAA41E25A665C000731773 /* PositionSliderToolbarItem.swift */,
+				EDAAA42125A665C100731773 /* VolumeSliderToolbarItem.swift */,
 				172A12310F5911D20078EF0C /* RepeatTransformers.h */,
 				172A12320F5911D20078EF0C /* RepeatTransformers.m */,
 				172A123A0F5912AE0078EF0C /* ShuffleTransformers.h */,
@@ -2041,7 +2041,6 @@
 				8E757AEC09F3265E0080F1EE /* Copy Files */,
 				177FD1000B90CB570011C3B5 /* CopyFiles */,
 				07DFC3930ECDF80100DA400D /* Copy Files */,
-				83978E27285C5A4C0076ED21 /* Run Sentry symbol upload */,
 			);
 			buildRules = (
 			);
@@ -2081,7 +2080,6 @@
 			);
 			name = Cog;
 			packageProductDependencies = (
-				83F9FFEE2D6EB75B00026576 /* Sentry */,
 			);
 			productInstallPath = /Applications;
 			productName = Cog;
@@ -2108,7 +2106,6 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Cog */;
 			packageReferences = (
-				83F9FFED2D6EB75B00026576 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			projectDirPath = "";
 			projectReferences = (
@@ -2582,26 +2579,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "$SCRIPT_INPUT_FILE_0 $SCRIPT_INPUT_FILE_1 $SCRIPT_OUTPUT_FILE_0\n";
-		};
-		83978E27285C5A4C0076ED21 /* Run Sentry symbol upload */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-			);
-			name = "Run Sentry symbol upload";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script is responsible for uploading debug symbols and source context for Sentry.\nif [[ \"x${SENTRY_ORG}\" != \"x\" ]] && [[ \"x${SENTRY_PROJECT}\" != \"x\" ]] && [[ \"x${SENTRY_AUTH_TOKEN}\" != \"x\" ]]; then\n  if [[ \"${CONFIGURATION}\" = \"Release\" ]] || [[ \"${CONFIGURATION}\" = \"Adhoc\" ]]; then\n    if [[ \"$(uname -m)\" == arm64 ]]; then\n      export PATH=\"/opt/homebrew/bin:$PATH\"\n    fi\n\n    if which sentry-cli >/dev/null; then\n      ERROR=$(sentry-cli --auth-token \"$SENTRY_AUTH_TOKEN\" debug-files upload --org \"$SENTRY_ORG\" --project \"$SENTRY_PROJECT\" --include-sources \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\n      if [ ! $? -eq 0 ]; then\n        echo \"warning: sentry-cli - $ERROR\"\n      fi\n    else\n      echo \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\n    fi\n  else\n    echo \"Skipping symbol upload.\"\n  fi\nelse\n  echo \"Sentry not configured.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3238,24 +3215,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		83F9FFED2D6EB75B00026576 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		83F9FFEE2D6EB75B00026576 /* Sentry */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 83F9FFED2D6EB75B00026576 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		837DC92F285B3F790005C58A /* DataModel.xcdatamodeld */ = {

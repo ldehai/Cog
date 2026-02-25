@@ -258,6 +258,7 @@
       }
     },
     "ConsentNo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -274,6 +275,7 @@
       }
     },
     "ConsentYes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1197,6 +1199,7 @@
       }
     },
     "SentryConsentText" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1213,6 +1216,7 @@
       }
     },
     "SentryConsentTitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1326,7 +1330,6 @@
     },
     "TimeElapsed" : {
       "extractionState" : "manual",
-      "generatesSymbol" : false,
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1376,7 +1379,6 @@
     },
     "TimeRemaining" : {
       "extractionState" : "manual",
-      "generatesSymbol" : false,
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -41,7 +41,6 @@
 
 #import "SandboxBroker.h"
 
-@import Sentry;
 
 extern NSMutableDictionary<NSString *, AlbumArtwork *> *kArtworkDictionary;
 
@@ -387,13 +386,10 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
 
     double progressstep = [urls count] ? 100.0 / (double)([urls count]) : 0;
 
-    id<SentrySpan> mainTask = [SentrySDK startTransactionWithName:@"Loading playlist entries" operation:@"Main task"];
 
-    id<SentrySpan> sandboxTask = [mainTask startChildWithOperation:@"Initial Sandbox sweep" description:@"Attempt load the files into the Sandbox storage, or locate them if they're already in storage"];
 
     NSURL *url;
     for(url in urls) {
-        id<SentrySpan> pathTask = [sandboxTask startChildWithOperation:@"Process one folder" description:[NSString stringWithFormat:@"Processing file or folder: %@", url]];
         @try {
             if(!url) continue;
             if([url isFileURL]) {
@@ -428,16 +424,9 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
                 [expandedURLs setValue:url forKey:[PlaylistLoader keyForPath:[url absoluteString]]];
             }
             
-            [pathTask finish];
         }
         @catch(NSException *e) {
             DLog(@"Exception caught while processing path: %@", e);
-            if(e) {
-                [SentrySDK captureException:e];
-            } else {
-                [SentrySDK captureMessage:[NSString stringWithFormat:@"Null exception when processing path: %@", url]];
-            }
-            [pathTask finishWithStatus:kSentrySpanStatusInternalError];
         }
 
         progress += progressstep;
@@ -445,7 +434,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
         [self setProgressJobStatus:progress];
     }
     
-    [sandboxTask finish];
 
     [self completeProgressJob];
 
@@ -458,7 +446,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
     progressstep = [expandedURLs count] ? 100.0 / (double)([expandedURLs count]) : 0;
 
     if([expandedURLs count]) {
-        __block id<SentrySpan> containerTask = [mainTask startChildWithOperation:@"Process paths for containers"];
 
         __block NSLock *lock = [NSLock new];
         
@@ -472,15 +459,10 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
             NSBlockOperation *op = [NSBlockOperation new];
             
             [op addExecutionBlock:^{
-                id<SentrySpan> pathTask = nil;
-                id<SentrySpan> innerTask = nil;
                 NSURL *url = nil;
                 @try {
                     url = obj;
 
-                    if(containerTask) {
-                        pathTask = [containerTask startChildWithOperation:@"Process path as container" description:[NSString stringWithFormat:@"Checking if file is container: %@", url]];
-                    }
                     [lock lock];
                     if([uniqueURLs containsObject:url]) {
                         [lock unlock];
@@ -489,9 +471,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
                     [lock unlock];
 
                     if([acceptableContainerTypes containsObject:[[url pathExtension] lowercaseString]]) {
-                        if(pathTask) {
-                            innerTask = [pathTask startChildWithOperation:@"Container, processing"];
-                        }
 
                         NSArray *urls = [AudioContainer urlsForContainerURL:url];
 
@@ -536,10 +515,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
                             [loadedURLs setValue:url forKey:key];
                             [lock unlock];
                         }
-                        if(innerTask) {
-                            [innerTask finish];
-                            innerTask = nil;
-                        }
                     } else if([[[url pathExtension] lowercaseString] isEqualToString:@"xml"]) {
                         [lock lock];
                         xmlData = [XmlContainer entriesForContainerURL:url];
@@ -549,24 +524,9 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
                         [loadedURLs setValue:url forKey:key];
                         [lock unlock];
                     }
-                    if(pathTask) {
-                        [pathTask finish];
-                        pathTask = nil;
-                    }
                 }
                 @catch(NSException *e) {
                     DLog(@"Exception caught while processing for containers: %@", e);
-                    if(e) {
-                        [SentrySDK captureException:e];
-                    } else {
-                        [SentrySDK captureMessage:[NSString stringWithFormat:@"Null exception caught while processing containers for URL: %@", url]];
-                    }
-                    if(innerTask) {
-                        [innerTask finishWithStatus:kSentrySpanStatusInternalError];
-                    }
-                    if(pathTask) {
-                        [pathTask finishWithStatus:kSentrySpanStatusInternalError];
-                    }
                 }
 
                 [lock lock];
@@ -583,7 +543,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
         progress = weakProgress;
         [self setProgressJobStatus:progress];
 
-        [containerTask finish];
     }
 
     progress = 0.0;
@@ -597,7 +556,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
 
     NSArray *fileTypes = [AudioPlayer fileTypes];
 
-    id<SentrySpan> filterTask = [mainTask startChildWithOperation:@"Filtering URLs for dupes and supported tracks"];
 
     NSArray *keys = [loadedURLs allKeys];
     if(sort) {
@@ -641,10 +599,8 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
     progressstep = [fileURLs count] ? 100.0 / (double)([fileURLs count]) : 0;
 
     for(url in fileURLs) {
-        id<SentrySpan> fileTask = nil;
 
         @try {
-            fileTask = [filterTask startChildWithOperation:@"Filtering individual path" description:[NSString stringWithFormat:@"File path: %@", url]];
             
             progress += progressstep;
             
@@ -659,24 +615,14 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
             
             [validURLs addObject:url];
 
-            [fileTask finish];
         }
         @catch(NSException *e) {
             DLog(@"Exception caught while filtering paths: %@", e);
-            if(e) {
-                [SentrySDK captureException:e];
-            } else {
-                [SentrySDK captureMessage:[NSString stringWithFormat:@"Null exception caught when filtering paths for URL: %@", url]];
-            }
-            if(fileTask) {
-                [fileTask finishWithStatus:kSentrySpanStatusInternalError];
-            }
         }
 
         [self setProgressJobStatus:progress];
     }
 
-    [filterTask finish];
 
     progress = 0.0;
 
@@ -700,7 +646,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
 
     progressstep = 100.0 / (double)(count);
 
-    __block id<SentrySpan> addTask = [mainTask startChildWithOperation:@"Add entries to playlist" description:[NSString stringWithFormat:@"Adding %lu entries to the playlist", [validURLs count]]];
 
     NSInteger i = 0;
     __block NSMutableArray *entries = [NSMutableArray arrayWithCapacity:count];
@@ -708,16 +653,11 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
         __block PlaylistEntry *pe;
 
         dispatch_sync_reentrant(dispatch_get_main_queue(), ^{
-            id<SentrySpan> addItemTask = nil;
-            if(addTask) {
-                addItemTask = [addTask startChildWithOperation:@"Add individual item on main queue" description:[NSString stringWithFormat:@"Track URL: %@", url]];
-            }
             pe = [NSEntityDescription insertNewObjectForEntityForName:@"PlaylistEntry" inManagedObjectContext:self->playlistController.persistentContainer.viewContext];
             pe.url = url;
             pe.index = index + i;
             pe.rawTitle = [[url path] lastPathComponent];
             pe.queuePosition = -1;
-            [addItemTask finish];
         });
 
         [entries addObject:pe];
@@ -728,7 +668,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
         [self setProgressJobStatus:progress];
     }
 
-    [addTask finish];
 
     NSInteger j = index + i;
 
@@ -775,7 +714,6 @@ static inline void dispatch_sync_reentrant(dispatch_queue_t queue, dispatch_bloc
         });
     }
     
-    [mainTask finish];
 
     // Clear the selection
     dispatch_sync_reentrant(dispatch_get_main_queue(), ^{
@@ -891,7 +829,6 @@ NSURL *_Nullable urlForPath(NSString *_Nullable path);
 
     __block NSMutableDictionary *uniquePathsEntries = [NSMutableDictionary new];
 
-    __block id<SentrySpan> mainTask = [SentrySDK startTransactionWithName:@"Loading tags" operation:@"Main tag operation"];
 
     {
         __block NSLock *blockLock = [NSLock new];
@@ -909,10 +846,6 @@ NSURL *_Nullable urlForPath(NSString *_Nullable path);
 
                     NSString *message = [NSString stringWithFormat:@"Loading metadata for %@", url];
                     DLog(@"%@", message);
-                    id<SentrySpan> childTask = nil;
-                    if(mainTask) {
-                        childTask = [mainTask startChildWithOperation:@"Load single tag" description:message];
-                    }
 
                     @try {
                         NSDictionary *entryProperties = [AudioPropertiesReader propertiesForURL:url];
@@ -934,20 +867,9 @@ NSURL *_Nullable urlForPath(NSString *_Nullable path);
                         [self setProgressJobStatus:progress];
                         [weakLock unlock];
 
-                        if(childTask) {
-                            [childTask finish];
-                        }
                     }
                     @catch(NSException *e) {
                         DLog(@"Exception thrown while reading tags: %@", e);
-                        if(e) {
-                            [SentrySDK captureException:e];
-                        } else {
-                            [SentrySDK captureMessage:[NSString stringWithFormat:@"Null exception caught while reading tags for URL: %@", url]];
-                        }
-                        if(childTask) {
-                            [childTask finishWithStatus:kSentrySpanStatusInternalError];
-                        }
                     }
                 }
             }];
@@ -963,7 +885,6 @@ NSURL *_Nullable urlForPath(NSString *_Nullable path);
 
     [self beginProgressJob:NSLocalizedString(@"ProgressSubActionMetadataApply", @"") percentOfTotal:50.0];
 
-    id<SentrySpan> finalTask = [mainTask startChildWithOperation:@"Apply tags to storage"];
 
     progressstep = 200.0 / (double)([outArray count]);
 
@@ -1037,8 +958,6 @@ NSURL *_Nullable urlForPath(NSString *_Nullable path);
     [self completeProgress];
     metadataLoadInProgress = NO;
     
-    [finalTask finish];
-    [mainTask finish];
 }
 
 // To be called on main thread only
@@ -1065,16 +984,11 @@ NSURL *_Nullable urlForPath(NSString *_Nullable path);
         return;
     }
     
-    __block id<SentrySpan> mainTask = [SentrySDK startTransactionWithName:@"Load tags synchronously" operation:@"Main task"];
 
     [load_info_indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *_Nonnull stop) {
         PlaylistEntry *pe = [entries objectAtIndex:idx];
 
         DLog(@"Loading metadata for %@", pe.url);
-        id<SentrySpan> childTask = nil;
-        if(mainTask) {
-            childTask = [mainTask startChildWithOperation:@"Load single tag" description:[NSString stringWithFormat:@"Loading tag for: %@", pe.urlString]];
-        }
 
         @try {
             NSDictionary *entryProperties = [AudioPropertiesReader propertiesForURL:pe.url];
@@ -1086,24 +1000,12 @@ NSURL *_Nullable urlForPath(NSString *_Nullable path);
             [pe setMetadata:entryInfo];
             [playlistController firstSawTrack:pe];
             
-            if(childTask) {
-                [childTask finish];
-            }
         }
         @catch(NSException *e) {
             DLog(@"Exception thrown while reading tag synchronously: %@", e);
-            if(e) {
-                [SentrySDK captureException:e];
-            } else {
-                [SentrySDK captureMessage:[NSString stringWithFormat:@"Null exception caught while reading tags for URL: %@", pe.url]];
-            }
-            if(childTask) {
-                [childTask finishWithStatus:kSentrySpanStatusInternalError];
-            }
         }
     }];
     
-    [mainTask finish];
 
     [self->playlistController updateTotalTime];
 

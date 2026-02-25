@@ -16,26 +16,7 @@
 // For instance, for the first option to get this treatment, we want time stretching to stay enabled
 // for existing installations, but disable itself by default on new installs, to spare processing.
 
-void showSentryConsent(NSWindow *window) {
-	BOOL askedConsent = [[NSUserDefaults standardUserDefaults] boolForKey:@"sentryAskedConsent"];
-	if(!askedConsent) {
-		[window orderFront:window];
-
-		NSAlert *alert = [NSAlert new];
-		[alert setMessageText:NSLocalizedString(@"SentryConsentTitle", @"")];
-		[alert setInformativeText:NSLocalizedString(@"SentryConsentText", @"")];
-		[alert addButtonWithTitle:NSLocalizedString(@"ConsentYes",@"")];
-		[alert addButtonWithTitle:NSLocalizedString(@"ConsentNo", @"")];
-		
-		[alert beginSheetModalForWindow:window completionHandler:^(NSModalResponse returnCode) {
-			if(returnCode == NSAlertFirstButtonReturn) {
-				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"sentryConsented"];
-			}
-		}];
-		
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"sentryAskedConsent"];
-	}
-}
+// Sentry consent removed
 
 @implementation MainWindow
 
@@ -54,7 +35,7 @@ void showSentryConsent(NSWindow *window) {
 	[playlistView setNextResponder:self];
 
 	if(![[NSUserDefaults standardUserDefaults] boolForKey:@"miniMode"]) {
-		showSentryConsent(self);
+		// Sentry consent removed
 	}
 }
 
