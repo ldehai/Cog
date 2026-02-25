@@ -15,12 +15,12 @@ class VolumeSliderToolbarItem: NSToolbarItem {
     private var observation: NSKeyValueObservation?
 
     override var minSize: NSSize {
-        get { return NSSize(width: 120, height: 28) }
+        get { return NSSize(width: 80, height: 28) }
         set {}
     }
 
     override var maxSize: NSSize {
-        get { return NSSize(width: 200, height: 28) }
+        get { return NSSize(width: 134, height: 28) }
         set {}
     }
 
