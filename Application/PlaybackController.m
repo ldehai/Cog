@@ -218,7 +218,9 @@ static double reverseSpeedScale(double input, double min, double max) {
 		[self pauseResume:self];
 	}
 
-	[self sendMetaData];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self sendMetaData];
+	});
 }
 
 - (IBAction)pauseResume:(id)sender {
@@ -236,16 +238,29 @@ static double reverseSpeedScale(double input, double min, double max) {
 
 	[[NSUserDefaults standardUserDefaults] setInteger:CogStatusPaused forKey:@"lastPlaybackStatus"];
 
-	[audioPlayer pause];
+	// Update UI immediately, then do heavy audio work asynchronously
 	[self setPlaybackStatus:CogStatusPaused];
 
-	[self sendMetaData];
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		[audioPlayer pause];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self sendMetaData];
+		});
+	});
 }
 
 - (IBAction)resume:(id)sender {
 	[[NSUserDefaults standardUserDefaults] setInteger:CogStatusPlaying forKey:@"lastPlaybackStatus"];
 
-	[audioPlayer resume];
+	// Update UI immediately, then do heavy audio work asynchronously
+	[self setPlaybackStatus:CogStatusPlaying];
+
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		[audioPlayer resume];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self sendMetaData];
+		});
+	});
 }
 
 - (IBAction)stop:(id)sender {

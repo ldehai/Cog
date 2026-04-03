@@ -109,9 +109,21 @@ static NSString *PlaybackButtonsPlaybackStatusObservationContext = @"PlaybackBut
 	if(clickedSegment == 0) // Previous
 	{
 		[playbackController prev:self];
-	} else if(clickedSegment == 1) // Play
+	} else if(clickedSegment == 1) // Play/Pause
 	{
-		[playbackController playPauseResume:self];
+		// Immediately toggle button icon for instant visual feedback
+		NSInteger status = [playbackController playbackStatus];
+		if(status == CogStatusPlaying) {
+			[self setImage:playImage forSegment:1];
+		} else {
+			[self setImage:pauseImage forSegment:1];
+		}
+		[self setNeedsDisplay:YES];
+
+		// Dispatch the actual heavy work asynchronously so the icon update renders first
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[playbackController playPauseResume:self];
+		});
 	} else if(clickedSegment == 2) // Stop
 	{
 		[playbackController stop:self];
